@@ -160,5 +160,15 @@
     "description": "The ultimate UI kit and design system for Figma, featuring thousands of modern components, charts, and icons.",
     "howToUse": "Speed up frontend development by borrowing proven SaaS dashboard layouts, clean data tables, card designs, and button styles. Excellent inspiration for clean, minimalist interfaces.",
     "tags": ["platform", "design-system", "figma-kit", "saas-ui"]
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "Version Control",
+    "url": "https://docs.github.com",
+    "description": "Cloud-based hosting service for Git repositories with issue tracking, pull requests, and automated CI/CD workflows.",
+    "howToUse": "Use for repository versioning, GitHub Actions automation, GitHub Pages static hosting, issue management, and collaborative code reviews via Pull Requests.",
+    "tags": ["version-control", "git", "ci-cd", "collaboration", "hosting"]
   }
 ]
+

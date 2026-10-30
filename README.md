@@ -2,24 +2,62 @@
 
 A clean, crisp minimalist personal developer portal and resource navigator built with HTML5, CSS (Bootstrap 5 + custom design system), and JavaScript.
 
-Designed to easily navigate tools, access official documentation, and view practical "How to Use in Future Projects" guides and cheat-sheet notes.
+Designed to easily navigate your tools, access official documentation, and reference practical *"How to Use in Future Projects"* notes.
 
 ---
 
 ## 🚀 Features
 
-- **Categorized Dashboard**:
+- **Categorized Directory**:
   - 💻 **Tech Stacks**: HTML5, CSS3, JavaScript (ES6+), React, Python, Node.js
   - ⚡ **Frameworks**: Bootstrap 5, Tailwind CSS
   - 🗄️ **Database**: MySQL, Supabase
+  - 🐙 **Version Control**: GitHub
   - 🧠 **Open Source Skills**: Superpowers, Ponytail, Wayfinder, Taste, Claude Skills
   - 🌐 **Online Platforms**: React Bits, Figma, Untitled UI
 - **Practical Notes Per Tool**: Dedicated *"💡 How to Use in Future Projects"* block with cheat-sheet tips, recommended setups, and architectural guidance.
 - **Real-Time Live Search**: Instant filtering across tool names, categories, descriptions, tags, and how-to notes (shortcut: press `/`).
-- **Interactive Tag Filters**: Dynamic tag cloud for quick cross-category filtering.
-- **In-Browser Tool Manager**: Add or edit tools directly in the browser with full client-side persistence (`localStorage`).
-- **Data Management (Export / Import)**: One-click export to `tools.json` to keep your Git repository up to date, plus JSON import and reset options.
-- **Zero-Dependency & Offline Ready**: Works directly by double-clicking `index.html` (via `data/tools.js`) or via any local web server.
+- **Dynamic Tag Cloud**: Quick one-click tag filtering (e.g. `#frontend`, `#ai-skills`, `#database`).
+- **Copy Documentation Link**: One-click URL copy button on every card with toast feedback.
+- **Read-Only & Tamper-Proof**: Safe for public deployment on **GitHub Pages** — visitors cannot edit, delete, or alter your workflow page.
+- **Zero-Dependency & Offline Ready**: Works directly by double-clicking `index.html` (via `data/tools.js`) or when hosted statically.
+
+---
+
+## 🌐 Deploy to GitHub Pages
+
+1. Push your repository to GitHub:
+   ```bash
+   git add .
+   git commit -m "Deploy EC-Tools to GitHub Pages"
+   git push origin main
+   ```
+2. In your GitHub repository:
+   - Go to **Settings** > **Pages** (under "Code and automation").
+   - Under **Build and deployment** > **Source**, choose **Deploy from a branch**.
+   - Select **Branch**: `main`, Folder: `/ (root)`.
+   - Click **Save**.
+3. Your site will be live at `https://<your-username>.github.io/EC-Tools/` in under a minute!
+
+---
+
+## ✏️ How to Add or Update Tools (For the Author)
+
+Since the site is cleanly decoupled from client-side tampering, you manage your tools safely directly through Git:
+1. Open [`data/tools.json`](data/tools.json) (and [`data/tools.js`](data/tools.js)).
+2. Add your new tool entry:
+   ```json
+   {
+     "id": "tool-id",
+     "name": "Tool Name",
+     "category": "Tech Stacks",
+     "url": "https://example.com/docs",
+     "description": "Short summary of what it does.",
+     "howToUse": "Your practical tips and cheat-sheet commands.",
+     "tags": ["frontend", "tool"]
+   }
+   ```
+3. Commit and push: GitHub Pages updates your live site automatically!
 
 ---
 
@@ -27,36 +65,17 @@ Designed to easily navigate tools, access official documentation, and view pract
 
 ```text
 EC-Tools/
-├── index.html            # Main semantic dashboard with responsive sidebar & modals
+├── index.html            # Main semantic dashboard with responsive sidebar & cards
 ├── css/
 │   └── styles.css        # Crisp minimalist documentation styling & custom tokens
 ├── js/
-│   └── app.js            # Controller for search, filtering, modals & localStorage
+│   └── app.js            # Controller for search, category/tag filtering & link copy
 ├── data/
 │   ├── tools.json        # Clean JSON dataset of tools and documentation links
-│   └── tools.js          # Direct-load dataset for zero-CORS local file execution
+│   └── tools.js          # Direct-load dataset for zero-CORS local & static execution
 └── test/
     ├── tools.test.js     # Schema, required tools, and HTML/CSS validation tests
     └── logic.test.js     # Search, filter, and state manipulation unit tests
-```
-
----
-
-## 🏃 Quick Start
-
-### Option 1: Open Directly in Browser
-Simply double-click `index.html` in your file explorer. It will load instantly without needing any server.
-
-### Option 2: Run via Local HTTP Server
-Using Python:
-```bash
-python -m http.server 8000
-```
-Then visit: `http://localhost:8000`
-
-Using Node (e.g. `npx serve`):
-```bash
-npx serve .
 ```
 
 ---

@@ -54,15 +54,10 @@
 
     <!-- Header Actions -->
     <div class="d-flex align-items-center gap-2">
-      <button type="button" class="btn-primary-custom" id="addToolBtn">
-        <i class="bi bi-plus-lg"></i>
-        <span class="d-none d-sm-inline">Add Tool</span>
-      </button>
-
-      <button type="button" class="btn-secondary-custom" id="openDataModalBtn" title="Export or Import tools dataset">
-        <i class="bi bi-arrow-down-up"></i>
-        <span class="d-none d-md-inline">Data</span>
-      </button>
+      <a href="https://github.com/EduCode597/EC-Tools" target="_blank" rel="noopener noreferrer" class="btn-secondary-custom" title="View on GitHub">
+        <i class="bi bi-github"></i>
+        <span class="d-none d-sm-inline">GitHub</span>
+      </a>
     </div>
   </header>
 
@@ -95,6 +90,10 @@
         </a>
         <a href="#online-platforms" class="category-nav-link" data-category="Online Platforms">
           <span><i class="bi bi-globe me-2 text-danger"></i> Online Platforms</span>
+          <span class="cat-count">0</span>
+        </a>
+        <a href="#version-control" class="category-nav-link" data-category="Version Control">
+          <span><i class="bi bi-git me-2" style="color: #f05032;"></i> Version Control</span>
           <span class="cat-count">0</span>
         </a>
       </nav>
@@ -143,6 +142,10 @@
             <span><i class="bi bi-globe me-2 text-danger"></i> Online Platforms</span>
             <span class="cat-count">0</span>
           </a>
+          <a href="#version-control" class="category-nav-link" data-category="Version Control" data-bs-dismiss="offcanvas">
+            <span><i class="bi bi-git me-2" style="color: #f05032;"></i> Version Control</span>
+            <span class="cat-count">0</span>
+          </a>
         </nav>
       </div>
     </div>
@@ -168,110 +171,6 @@
       </section>
     </main>
 
-  </div>
-
-  <!-- Modal: Add / Edit Tool -->
-  <div class="modal fade" id="toolModal" tabindex="-1" aria-labelledby="toolModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <form id="toolForm">
-          <div class="modal-header">
-            <h5 class="modal-title fw-bold" id="toolModalTitle">Add New Tool / Resource</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="toolName" class="form-label">Tool Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="toolName" placeholder="e.g. Next.js, Redis, Zustand" required>
-              </div>
-
-              <div class="col-md-6">
-                <label for="toolCategory" class="form-label">Category <span class="text-danger">*</span></label>
-                <select class="form-select" id="toolCategory" required>
-                  <option value="Tech Stacks">Tech Stacks</option>
-                  <option value="Frameworks">Frameworks</option>
-                  <option value="Database">Database</option>
-                  <option value="Open Source Skills">Open Source Skills</option>
-                  <option value="Online Platforms">Online Platforms</option>
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label for="toolUrl" class="form-label">Official Documentation URL <span class="text-danger">*</span></label>
-                <input type="url" class="form-control" id="toolUrl" placeholder="https://..." required>
-              </div>
-
-              <div class="col-12">
-                <label for="toolDescription" class="form-label">Short Description</label>
-                <input type="text" class="form-control" id="toolDescription" placeholder="Brief summary of what this tool is used for...">
-              </div>
-
-              <div class="col-12">
-                <label for="toolHowTo" class="form-label">💡 How to Use in Future Projects (Practical Tips)</label>
-                <textarea class="form-control" id="toolHowTo" rows="3" placeholder="Explain your personal setup recommendations, cheat-sheet commands, when to choose it, or integration tricks..."></textarea>
-              </div>
-
-              <div class="col-12">
-                <label for="toolTags" class="form-label">Tags (comma-separated)</label>
-                <input type="text" class="form-control" id="toolTags" placeholder="frontend, ui, fast-api, state-management">
-                <div class="form-text">Separate tags with commas. No need to include the '#' symbol.</div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-danger btn-sm" id="deleteToolBtn" style="display: none;">
-              <i class="bi bi-trash3 me-1"></i> Delete Tool
-            </button>
-            <div class="d-flex gap-2 ms-auto">
-              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary px-4" id="saveToolBtn">Save Tool</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Data Management (Export & Import) -->
-  <div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold" id="dataModalTitle">
-            <i class="bi bi-database-gear text-primary me-2"></i>Data Management & Backup
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p class="text-muted small mb-2">
-            You can export your tools dataset as <code>tools.json</code> to keep in your Git repo, or import changes back into the application.
-          </p>
-          <div class="mb-3">
-            <label for="jsonExportArea" class="form-label">Dataset JSON</label>
-            <textarea class="form-control font-monospace" id="jsonExportArea" rows="11" style="font-size: 0.82rem;"></textarea>
-          </div>
-          <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
-            <div class="d-flex gap-2">
-              <button type="button" class="btn btn-sm btn-outline-secondary" id="copyJsonBtn">
-                <i class="bi bi-clipboard me-1"></i>Copy JSON
-              </button>
-              <button type="button" class="btn btn-sm btn-outline-primary" id="downloadJsonBtn">
-                <i class="bi bi-download me-1"></i>Download tools.json
-              </button>
-            </div>
-            <div class="d-flex gap-2">
-              <button type="button" class="btn btn-sm btn-outline-danger" id="resetDefaultsBtn">
-                <i class="bi bi-arrow-counterclockwise me-1"></i>Reset to Default
-              </button>
-              <button type="button" class="btn btn-sm btn-primary" id="importJsonBtn">
-                <i class="bi bi-upload me-1"></i>Import from JSON
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- Toast Notification -->

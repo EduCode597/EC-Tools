@@ -9,7 +9,7 @@ const indexPath = path.join(__dirname, '..', 'index.html');
 const cssPath = path.join(__dirname, '..', 'css', 'styles.css');
 const appJsPath = path.join(__dirname, '..', 'js', 'app.js');
 
-describe('EC-Tools Test Suite', () => {
+describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
 
   test('tools.json exists and is valid JSON', () => {
     assert.ok(fs.existsSync(toolsJsonPath), 'tools.json should exist');
@@ -48,7 +48,8 @@ describe('EC-Tools Test Suite', () => {
       'claude skills',
       'react bits',
       'figma',
-      'untitled ui'
+      'untitled ui',
+      'github'
     ];
 
     for (const req of requiredTools) {
@@ -77,7 +78,8 @@ describe('EC-Tools Test Suite', () => {
       'Frameworks',
       'Database',
       'Open Source Skills',
-      'Online Platforms'
+      'Online Platforms',
+      'Version Control'
     ];
 
     expectedCategories.forEach(cat => {
@@ -85,7 +87,7 @@ describe('EC-Tools Test Suite', () => {
     });
   });
 
-  test('index.html contains all critical semantic elements and IDs', () => {
+  test('index.html contains required read-only semantic elements and IDs', () => {
     assert.ok(fs.existsSync(indexPath), 'index.html should exist');
     const html = fs.readFileSync(indexPath, 'utf8');
 
@@ -95,24 +97,25 @@ describe('EC-Tools Test Suite', () => {
     assert.ok(html.includes('<main class="app-main'), 'Must have semantic main container');
     assert.ok(html.includes('<h1'), 'Must have a main h1 tag');
 
-    // Element IDs
+    // Required read-only IDs
     const requiredIds = [
       'searchInput',
       'clearSearchBtn',
-      'addToolBtn',
-      'openDataModalBtn',
       'tagCloud',
       'toolsContainer',
       'toolCountBadge',
-      'toolModal',
-      'toolForm',
-      'dataModal',
       'customToast'
     ];
 
     requiredIds.forEach(id => {
       assert.ok(html.includes(`id="${id}"`), `index.html must include element with id="${id}"`);
     });
+
+    // Verification: Add Tool and mutation modals are removed
+    assert.ok(!html.includes('id="addToolBtn"'), 'addToolBtn should be removed for GitHub Pages');
+    assert.ok(!html.includes('id="toolModal"'), 'toolModal should be removed for GitHub Pages');
+    assert.ok(!html.includes('id="toolForm"'), 'toolForm should be removed for GitHub Pages');
+    assert.ok(!html.includes('id="dataModal"'), 'dataModal should be removed for GitHub Pages');
   });
 
   test('styles.css contains required design classes', () => {
@@ -134,13 +137,19 @@ describe('EC-Tools Test Suite', () => {
     });
   });
 
-  test('app.js syntax and key methods are defined', () => {
+  test('app.js is secure and read-only without form mutations', () => {
     assert.ok(fs.existsSync(appJsPath), 'app.js should exist');
     const appJs = fs.readFileSync(appJsPath, 'utf8');
 
-    assert.ok(appJs.includes('STORAGE_KEY'), 'Should manage dataset storage');
+    // Core read-only features
     assert.ok(appJs.includes('getFilteredTools'), 'Should have filtering logic');
     assert.ok(appJs.includes('renderTools'), 'Should have render tools logic');
-    assert.ok(appJs.includes('saveToolFromForm'), 'Should have form saving logic');
+    assert.ok(appJs.includes('updateCategoryCounters'), 'Should have category counting logic');
+    assert.ok(appJs.includes('renderTags'), 'Should have tag rendering logic');
+
+    // Mutation functions removed
+    assert.ok(!appJs.includes('saveToolFromForm'), 'saveToolFromForm should be removed');
+    assert.ok(!appJs.includes('openAddModal'), 'openAddModal should be removed');
+    assert.ok(!appJs.includes('btn-edit-tool'), 'btn-edit-tool should not be rendered');
   });
 });

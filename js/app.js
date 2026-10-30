@@ -1,24 +1,21 @@
 /**
  * EC-Tools Application Logic
- * Personal Project & Stack Navigator
+ * Personal Project & Stack Navigator (Read-Only Static Deployment for GitHub Pages)
  */
 
 (function () {
   'use strict';
-
-  // Storage key
-  const STORAGE_KEY = 'ec_tools_dataset_v1';
 
   // App State
   let tools = [];
   let activeCategory = 'all';
   let activeTag = null;
   let searchQuery = '';
-  let editingToolId = null;
 
   // DOM Elements
   const toolsContainer = document.getElementById('toolsContainer');
   const searchInput = document.getElementById('searchInput');
+  const mobileSearchInput = document.getElementById('mobileSearchInput');
   const clearSearchBtn = document.getElementById('clearSearchBtn');
   const categoryLinks = document.querySelectorAll('.category-nav-link');
   const tagCloud = document.getElementById('tagCloud');
@@ -27,16 +24,6 @@
   const toolCountBadge = document.getElementById('toolCountBadge');
   const toastEl = document.getElementById('customToast');
   const toastMessageEl = document.getElementById('toastMessage');
-
-  // Modals
-  const toolModalEl = document.getElementById('toolModal');
-  let toolModalInstance = null;
-  const toolForm = document.getElementById('toolForm');
-  const toolModalTitle = document.getElementById('toolModalTitle');
-
-  const dataModalEl = document.getElementById('dataModal');
-  let dataModalInstance = null;
-  const jsonExportArea = document.getElementById('jsonExportArea');
 
   /**
    * Helper: Show Toast Notification
@@ -51,16 +38,6 @@
   }
 
   /**
-   * Initialize bootstrap modal instances
-   */
-  function initModals() {
-    if (typeof bootstrap !== 'undefined') {
-      if (toolModalEl) toolModalInstance = new bootstrap.Modal(toolModalEl);
-      if (dataModalEl) dataModalInstance = new bootstrap.Modal(dataModalEl);
-    }
-  }
-
-  /**
    * Category slug helper for badge styling
    */
   function getCategoryClass(category) {
@@ -72,28 +49,17 @@
   }
 
   /**
-   * Load data from localStorage or default bundled data
+   * Load data from window.DEFAULT_TOOLS or fallback to fetch data/tools.json
    */
   async function loadData() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        tools = JSON.parse(stored);
-        render();
-        return;
-      } catch (e) {
-        console.warn('Failed to parse localStorage data, falling back to defaults', e);
-      }
-    }
-
-    // Fallback to window.DEFAULT_TOOLS if loaded
+    // 1. Instant load from bundled script (works in file:// and GitHub Pages)
     if (window.DEFAULT_TOOLS && Array.isArray(window.DEFAULT_TOOLS)) {
       tools = [...window.DEFAULT_TOOLS];
       render();
       return;
     }
 
-    // Fallback to fetch data/tools.json
+    // 2. Fetch data/tools.json fallback
     try {
       const res = await fetch('data/tools.json');
       if (res.ok) {
@@ -104,17 +70,6 @@
     }
 
     render();
-  }
-
-  /**
-   * Save dataset to localStorage
-   */
-  function saveData() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tools, null, 2));
-    } catch (e) {
-      console.error('Failed to save to localStorage:', e);
-    }
   }
 
   /**
@@ -253,6 +208,7 @@
           activeTag = null;
           searchQuery = '';
           if (searchInput) searchInput.value = '';
+          if (mobileSearchInput) mobileSearchInput.value = '';
           render();
         });
       }
@@ -284,9 +240,6 @@
                 <div class="d-flex align-items-center gap-1">
                   <button type="button" class="btn-card-action btn-copy-url" data-url="${escapeHtml(tool.url)}" title="Copy documentation link">
                     <i class="bi bi-link-45deg"></i>
-                  </button>
-                  <button type="button" class="btn-card-action btn-edit-tool" data-id="${escapeHtml(tool.id)}" title="Edit tool details">
-                    <i class="bi bi-pencil-square"></i>
                   </button>
                 </div>
               </div>
@@ -343,7 +296,7 @@
    * Event Listeners
    */
   function setupEventListeners() {
-    // Search input
+    // Desktop Search input
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
@@ -368,9 +321,19 @@
       });
     }
 
+    // Mobile Search input
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        if (searchInput) searchInput.value = searchQuery;
+        renderTools();
+      });
+    }
+
     if (clearSearchBtn) {
       clearSearchBtn.addEventListener('click', () => {
         if (searchInput) searchInput.value = '';
+        if (mobileSearchInput) mobileSearchInput.value = '';
         searchQuery = '';
         clearSearchBtn.style.display = 'none';
         renderTools();
@@ -383,7 +346,6 @@
         e.preventDefault();
         const cat = link.getAttribute('data-category');
         activeCategory = cat;
-        // Keep active tag or clear if switching? Clear active tag to avoid empty results
         activeTag = null;
         render();
       });
@@ -404,7 +366,7 @@
       });
     }
 
-    // Card delegator (Tags, Copy URL, Edit Tool)
+    // Card delegator (Tags, Copy URL)
     if (toolsContainer) {
       toolsContainer.addEventListener('click', (e) => {
         // Tag click inside card
@@ -427,231 +389,17 @@
           }
           return;
         }
-
-        // Edit Tool
-        const editBtn = e.target.closest('.btn-edit-tool');
-        if (editBtn) {
-          const id = editBtn.getAttribute('data-id');
-          openEditModal(id);
-          return;
-        }
       });
     }
-
-    // Add Tool Button
-    const addToolBtn = document.getElementById('addToolBtn');
-    if (addToolBtn) {
-      addToolBtn.addEventListener('click', () => {
-        openAddModal();
-      });
-    }
-
-    // Tool Form Submit
-    if (toolForm) {
-      toolForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        saveToolFromForm();
-      });
-    }
-
-    // Data Management Buttons (Export / Import)
-    const openDataModalBtn = document.getElementById('openDataModalBtn');
-    if (openDataModalBtn) {
-      openDataModalBtn.addEventListener('click', () => {
-        if (jsonExportArea) {
-          jsonExportArea.value = JSON.stringify(tools, null, 2);
-        }
-        if (dataModalInstance) dataModalInstance.show();
-      });
-    }
-
-    const copyJsonBtn = document.getElementById('copyJsonBtn');
-    if (copyJsonBtn) {
-      copyJsonBtn.addEventListener('click', () => {
-        if (jsonExportArea && navigator.clipboard) {
-          navigator.clipboard.writeText(jsonExportArea.value).then(() => {
-            showToast('JSON copied to clipboard!');
-          });
-        }
-      });
-    }
-
-    const downloadJsonBtn = document.getElementById('downloadJsonBtn');
-    if (downloadJsonBtn) {
-      downloadJsonBtn.addEventListener('click', () => {
-        const jsonStr = JSON.stringify(tools, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'tools.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showToast('tools.json downloaded successfully!');
-      });
-    }
-
-    const importJsonBtn = document.getElementById('importJsonBtn');
-    if (importJsonBtn) {
-      importJsonBtn.addEventListener('click', () => {
-        if (!jsonExportArea) return;
-        try {
-          const imported = JSON.parse(jsonExportArea.value);
-          if (Array.isArray(imported)) {
-            tools = imported;
-            saveData();
-            render();
-            if (dataModalInstance) dataModalInstance.hide();
-            showToast('Tools successfully updated from JSON!');
-          } else {
-            alert('JSON must be an array of tool objects.');
-          }
-        } catch (err) {
-          alert('Invalid JSON format. Please verify the syntax.');
-        }
-      });
-    }
-
-    const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
-    if (resetDefaultsBtn) {
-      resetDefaultsBtn.addEventListener('click', () => {
-        if (confirm('Reset all tools back to default repository tools? Any custom additions will be cleared.')) {
-          localStorage.removeItem(STORAGE_KEY);
-          if (window.DEFAULT_TOOLS) {
-            tools = [...window.DEFAULT_TOOLS];
-          }
-          render();
-          if (dataModalInstance) dataModalInstance.hide();
-          showToast('Reset to default tools successfully!');
-        }
-      });
-    }
-
-    // Delete tool button inside modal
-    const deleteToolBtn = document.getElementById('deleteToolBtn');
-    if (deleteToolBtn) {
-      deleteToolBtn.addEventListener('click', () => {
-        if (!editingToolId) return;
-        if (confirm('Are you sure you want to delete this tool?')) {
-          tools = tools.filter((t) => t.id !== editingToolId);
-          saveData();
-          render();
-          if (toolModalInstance) toolModalInstance.hide();
-          showToast('Tool deleted.');
-        }
-      });
-    }
-  }
-
-  /**
-   * Modal: Open for Add
-   */
-  function openAddModal() {
-    editingToolId = null;
-    if (toolForm) toolForm.reset();
-    if (toolModalTitle) toolModalTitle.textContent = 'Add New Tool / Resource';
-    const deleteBtn = document.getElementById('deleteToolBtn');
-    if (deleteBtn) deleteBtn.style.display = 'none';
-
-    // Preselect active category if not 'all'
-    const categorySelect = document.getElementById('toolCategory');
-    if (categorySelect && activeCategory !== 'all') {
-      categorySelect.value = activeCategory;
-    }
-
-    if (toolModalInstance) toolModalInstance.show();
-  }
-
-  /**
-   * Modal: Open for Edit
-   */
-  function openEditModal(id) {
-    const tool = tools.find((t) => t.id === id);
-    if (!tool) return;
-
-    editingToolId = id;
-    if (toolModalTitle) toolModalTitle.textContent = `Edit Tool: ${tool.name}`;
-
-    document.getElementById('toolName').value = tool.name || '';
-    document.getElementById('toolCategory').value = tool.category || 'Tech Stacks';
-    document.getElementById('toolUrl').value = tool.url || '';
-    document.getElementById('toolDescription').value = tool.description || '';
-    document.getElementById('toolHowTo').value = tool.howToUse || '';
-    document.getElementById('toolTags').value = (tool.tags || []).join(', ');
-
-    const deleteBtn = document.getElementById('deleteToolBtn');
-    if (deleteBtn) deleteBtn.style.display = 'inline-block';
-
-    if (toolModalInstance) toolModalInstance.show();
-  }
-
-  /**
-   * Modal: Save form
-   */
-  function saveToolFromForm() {
-    const name = document.getElementById('toolName').value.trim();
-    const category = document.getElementById('toolCategory').value;
-    const url = document.getElementById('toolUrl').value.trim();
-    const description = document.getElementById('toolDescription').value.trim();
-    const howToUse = document.getElementById('toolHowTo').value.trim();
-    const rawTags = document.getElementById('toolTags').value;
-
-    const tags = rawTags
-      .split(',')
-      .map((t) => t.trim().toLowerCase().replace(/^#/, ''))
-      .filter((t) => t.length > 0);
-
-    if (!name || !url) {
-      alert('Please provide at least a Tool Name and Documentation URL.');
-      return;
-    }
-
-    if (editingToolId) {
-      // Update existing
-      const index = tools.findIndex((t) => t.id === editingToolId);
-      if (index !== -1) {
-        tools[index] = {
-          ...tools[index],
-          name,
-          category,
-          url,
-          description,
-          howToUse,
-          tags,
-        };
-        showToast(`Updated "${name}" successfully!`);
-      }
-    } else {
-      // Create new
-      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Date.now().toString(36);
-      const newTool = {
-        id,
-        name,
-        category,
-        url,
-        description,
-        howToUse,
-        tags,
-      };
-      tools.unshift(newTool);
-      showToast(`Added "${name}" to your tools!`);
-    }
-
-    saveData();
-    render();
-    if (toolModalInstance) toolModalInstance.hide();
   }
 
   // Initialization
   document.addEventListener('DOMContentLoaded', () => {
-    initModals();
     setupEventListeners();
     loadData();
   });
 
-  // Export functions for testing if needed
+  // Export functions for unit testing
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
       getFilteredTools,
