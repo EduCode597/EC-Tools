@@ -1,0 +1,164 @@
+[
+  {
+    "id": "html5",
+    "name": "HTML5",
+    "category": "Tech Stacks",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "description": "Standard markup language for documents designed to be displayed in a web browser.",
+    "howToUse": "Use semantic elements (<header>, <nav>, <main>, <section>, <article>, <footer>) for SEO and accessibility. Ensure all forms have labels and ARIA attributes for clean personal tools and dashboards.",
+    "tags": ["frontend", "core", "markup", "web"]
+  },
+  {
+    "id": "css3",
+    "name": "CSS3",
+    "category": "Tech Stacks",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "description": "Style sheet language used for describing the presentation of a document written in HTML.",
+    "howToUse": "Leverage CSS custom properties (variables) for theme tokens, Flexbox for 1D navigation layouts, and CSS Grid for 2D responsive dashboards. Use clamp() for fluid typography.",
+    "tags": ["frontend", "styling", "design", "responsive"]
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript (ES6+)",
+    "category": "Tech Stacks",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "description": "Lightweight, interpreted programming language with first-class functions for web apps.",
+    "howToUse": "Build modular code using ES modules (import/export), async/await for network requests, localStorage for lightweight client-side persistence, and custom events for component communication.",
+    "tags": ["frontend", "scripting", "core", "logic"]
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "category": "Tech Stacks",
+    "url": "https://react.dev",
+    "description": "The library for web and native user interfaces based on reusable components and declarative state.",
+    "howToUse": "Use when creating multi-view single page applications with complex state. Pair with Vite for rapid project scaffolding and use custom hooks (e.g. useLocalStorage, useFetch) to separate UI from logic.",
+    "tags": ["frontend", "components", "spa", "ui"]
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "category": "Tech Stacks",
+    "url": "https://docs.python.org/3/",
+    "description": "Versatile, high-level programming language ideal for scripting, backend APIs, data handling, and AI automation.",
+    "howToUse": "Use FastAPI or Flask for lightweight REST APIs, BeautifulSoup/Playwright for web scrapers, and Pydantic for strict schema validation. Excellent for automation scripts and data wrangling.",
+    "tags": ["backend", "scripting", "ai", "automation"]
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "category": "Tech Stacks",
+    "url": "https://nodejs.org/docs/latest/api/",
+    "description": "Open-source, cross-platform JavaScript runtime environment executing code outside a web browser.",
+    "howToUse": "Use Express or Hono for API backends, npm scripts for build pipelines, and Node built-in fs/path modules for custom CLI utilities and file processors.",
+    "tags": ["backend", "runtime", "javascript", "server"]
+  },
+  {
+    "id": "bootstrap",
+    "name": "Bootstrap 5",
+    "category": "Frameworks",
+    "url": "https://getbootstrap.com/docs/5.3/getting-started/introduction/",
+    "description": "Powerful, extensible, and feature-packed frontend toolkit with responsive grid, prebuilt components, and utility classes.",
+    "howToUse": "Ideal for fast prototyping and internal personal tools. Use the container-fluid + row + col system for responsive layouts, modals for overlays, and customize via CSS variables without bloating your build.",
+    "tags": ["frontend", "css-framework", "responsive", "components"]
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "category": "Frameworks",
+    "url": "https://tailwindcss.com/docs",
+    "description": "A utility-first CSS framework packed with classes that can be composed to build any custom design.",
+    "howToUse": "Best for tailor-made, highly polished modern web apps. Use arbitrary variants, grid layouts, and color palettes. Combine with @apply or reusable component wrappers for scalable UI code.",
+    "tags": ["frontend", "css-framework", "utility-first", "design"]
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "category": "Database",
+    "url": "https://dev.mysql.com/doc/",
+    "description": "World's most popular open-source relational database management system (RDBMS) for structured relational data.",
+    "howToUse": "Use when data requires strict relational schemas, ACID compliance, and complex join queries. Pair with Prisma or Knex in Node.js, or SQLAlchemy in Python for type-safe ORM migrations.",
+    "tags": ["database", "sql", "relational", "backend"]
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "category": "Database",
+    "url": "https://supabase.com/docs",
+    "description": "Open-source Firebase alternative providing a dedicated PostgreSQL database, Auth, Storage, and Realtime APIs.",
+    "howToUse": "The go-to choice for solo projects: get instant auth (OAuth, Magic Link), Postgres with Row-Level Security (RLS), auto-generated REST/GraphQL endpoints, and bucket file storage in minutes.",
+    "tags": ["database", "postgres", "auth", "backend-as-a-service"]
+  },
+  {
+    "id": "superpowers",
+    "name": "Superpowers",
+    "category": "Open Source Skills",
+    "url": "https://github.com/obra/superpowers",
+    "description": "Agentic skills and composable capability extensions enabling LLMs to interact with tools, browsers, and environments.",
+    "howToUse": "Equip AI agents with custom reasoning skills, automated task workflows, and repeatable tool patterns. Store specialized prompts and tool schemas in project agent configs.",
+    "tags": ["ai-skills", "agentic", "automation", "tools"]
+  },
+  {
+    "id": "ponytail",
+    "name": "Ponytail",
+    "category": "Open Source Skills",
+    "url": "https://github.com/",
+    "description": "Developer productivity skill and workflow automation tool for streamlining project execution and code tasks.",
+    "howToUse": "Use as a companion workflow booster to manage repetitive tasks, command pipelines, and environment setups across personal codebases.",
+    "tags": ["ai-skills", "productivity", "workflow", "automation"]
+  },
+  {
+    "id": "wayfinder",
+    "name": "Wayfinder",
+    "category": "Open Source Skills",
+    "url": "https://github.com/",
+    "description": "Pathfinding and architectural navigation skill for tracing relationships, project hierarchies, and dependency graphs.",
+    "howToUse": "Employ when jumping into new repositories or multi-module projects to map dependencies, trace entry points, and identify circular links quickly.",
+    "tags": ["ai-skills", "architecture", "navigation", "graph"]
+  },
+  {
+    "id": "taste",
+    "name": "Taste",
+    "category": "Open Source Skills",
+    "url": "https://github.com/",
+    "description": "Design critique, aesthetic curation, and UI evaluation skill for ensuring high visual polish in software.",
+    "howToUse": "Run aesthetic audits on UI layouts before launch. Check color harmony, typography hierarchy, whitespace balance, and micro-interactions for a WOW impression.",
+    "tags": ["ai-skills", "design", "critique", "ui-ux"]
+  },
+  {
+    "id": "claude-skills",
+    "name": "Claude Skills",
+    "category": "Open Source Skills",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+    "description": "Structured tool-use definitions, prompt templates, and system instructions tailored for Claude & agentic workflows.",
+    "howToUse": "Implement structured JSON tool definitions (name, description, input_schema) to give LLMs deterministic API-calling capabilities, file editing abilities, and external data lookup.",
+    "tags": ["ai-skills", "anthropic", "tool-use", "prompts"]
+  },
+  {
+    "id": "react-bits",
+    "name": "React Bits",
+    "category": "Online Platforms",
+    "url": "https://reactbits.dev",
+    "description": "Curated collection of lightweight, copy-paste animated React components, text effects, and interactive UI elements.",
+    "howToUse": "Browse for animated hero titles, magnetic buttons, interactive card hover effects, and background shaders to make client-side React apps feel responsive, dynamic, and visually stunning.",
+    "tags": ["platform", "react", "animations", "ui-components"]
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "category": "Online Platforms",
+    "url": "https://help.figma.com/hc/en-us",
+    "description": "Collaborative cloud-based interface design, prototyping, and wireframing platform used by product designers.",
+    "howToUse": "Use for high-fidelity wireframing before writing code. Define design tokens (colors, spacing, typography), auto-layout components, and export SVGs directly for web apps.",
+    "tags": ["platform", "design", "wireframing", "prototyping"]
+  },
+  {
+    "id": "untitled-ui",
+    "name": "Untitled UI",
+    "category": "Online Platforms",
+    "url": "https://www.untitledui.com",
+    "description": "The ultimate UI kit and design system for Figma, featuring thousands of modern components, charts, and icons.",
+    "howToUse": "Speed up frontend development by borrowing proven SaaS dashboard layouts, clean data tables, card designs, and button styles. Excellent inspiration for clean, minimalist interfaces.",
+    "tags": ["platform", "design-system", "figma-kit", "saas-ui"]
+  }
+]
