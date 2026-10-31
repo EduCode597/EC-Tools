@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-palette="warm-linen">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EC-Tools | Personal Tech Stack & Project Navigator</title>
-  <meta name="description" content="Personal documentation and quick-reference portal for web technologies, frameworks, databases, AI skills, and design platforms.">
+  <title>Madriaga | EC-Tools - Personal Tech Stack & Project Navigator</title>
+  <meta name="description" content="Personal documentation and quick-reference portal for web technologies, frameworks, databases, AI skills, and design platforms by John Eduard Madriaga.">
+  <link rel="icon" type="image/svg+xml" href="public/Madriaga_logo.svg">
+
+  <!-- Anti-FOUT Theme Initializer -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const allowed = ['warm-linen', 'midnight-obsidian', 'nordic-sage', 'pitch-black', 'crisp-alabaster'];
+        if (saved && allowed.includes(saved)) {
+          document.documentElement.setAttribute('data-palette', saved);
+        } else {
+          document.documentElement.setAttribute('data-palette', 'warm-linen');
+        }
+      } catch (e) {}
+    })();
+  </script>
   
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Bootstrap 5 CSS & Icons CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -28,16 +44,17 @@
         <i class="bi bi-list fs-5"></i>
       </button>
 
-      <!-- Brand Identity -->
-      <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
-        <div class="bg-primary text-white rounded-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-          <i class="bi bi-stack fs-6"></i>
+      <!-- Brand Identity with Madriaga Logo -->
+      <a href="index.html" class="brand-link d-flex align-items-center gap-2 text-decoration-none">
+        <div class="brand-logo-frame">
+          <img src="public/Madriaga_logo.svg" alt="Madriaga Brand Logo" class="brand-logo-img" width="34" height="34">
         </div>
         <div class="d-flex flex-column">
           <div class="d-flex align-items-center gap-2">
-            <span class="fw-bold text-dark fs-6" style="letter-spacing: -0.02em;">EC-Tools</span>
-            <span class="brand-badge">Personal Hub</span>
+            <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
+            <span class="brand-badge">EC-Tools</span>
           </div>
+          <span class="brand-subtext d-none d-sm-inline">Personal Tech Hub &bull; @EduCode597</span>
         </div>
       </a>
     </div>
@@ -52,11 +69,31 @@
       <span class="search-shortcut">/</span>
     </div>
 
-    <!-- Header Actions -->
+    <!-- Header Actions: Palette Rotator & Social Links -->
     <div class="d-flex align-items-center gap-2">
+      <!-- Interactive 5-Hex Palette Rotator -->
+      <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
+        <i class="bi bi-palette2"></i>
+        <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
+        <span class="palette-swatch-preview" aria-hidden="true">
+          <span class="swatch-dot" style="background-color: #ffffff;" title="#ffffff"></span>
+          <span class="swatch-dot" style="background-color: #fff4e9;" title="#fff4e9"></span>
+          <span class="swatch-dot" style="background-color: #828e82;" title="#828e82"></span>
+          <span class="swatch-dot" style="background-color: #131b23;" title="#131b23"></span>
+          <span class="swatch-dot" style="background-color: #000000;" title="#000000"></span>
+        </span>
+      </button>
+
+      <!-- Portfolio CTA in Header -->
+      <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer" class="btn-portfolio-header d-none d-md-inline-flex" title="Visit John Eduard Madriaga's Portfolio">
+        <span>Portfolio</span>
+        <i class="bi bi-arrow-up-right"></i>
+      </a>
+
+      <!-- GitHub Link -->
       <a href="https://github.com/EduCode597/EC-Tools" target="_blank" rel="noopener noreferrer" class="btn-secondary-custom" title="View on GitHub">
         <i class="bi bi-github"></i>
-        <span class="d-none d-sm-inline">GitHub</span>
+        <span class="d-none d-lg-inline">GitHub</span>
       </a>
     </div>
   </header>
@@ -73,27 +110,27 @@
           <span class="cat-count">0</span>
         </a>
         <a href="#tech-stacks" class="category-nav-link" data-category="Tech Stacks">
-          <span><i class="bi bi-code-slash me-2 text-info"></i> Tech Stacks</span>
+          <span><i class="bi bi-code-slash me-2"></i> Tech Stacks</span>
           <span class="cat-count">0</span>
         </a>
         <a href="#frameworks" class="category-nav-link" data-category="Frameworks">
-          <span><i class="bi bi-layers me-2 text-primary"></i> Frameworks</span>
+          <span><i class="bi bi-layers me-2"></i> Frameworks</span>
           <span class="cat-count">0</span>
         </a>
         <a href="#database" class="category-nav-link" data-category="Database">
-          <span><i class="bi bi-database me-2 text-success"></i> Database</span>
+          <span><i class="bi bi-database me-2"></i> Database</span>
           <span class="cat-count">0</span>
         </a>
         <a href="#open-source-skills" class="category-nav-link" data-category="Open Source Skills">
-          <span><i class="bi bi-robot me-2 text-warning"></i> Open Source Skills</span>
+          <span><i class="bi bi-robot me-2"></i> Open Source Skills</span>
           <span class="cat-count">0</span>
         </a>
         <a href="#online-platforms" class="category-nav-link" data-category="Online Platforms">
-          <span><i class="bi bi-globe me-2 text-danger"></i> Online Platforms</span>
+          <span><i class="bi bi-globe me-2"></i> Online Platforms</span>
           <span class="cat-count">0</span>
         </a>
         <a href="#version-control" class="category-nav-link" data-category="Version Control">
-          <span><i class="bi bi-git me-2" style="color: #f05032;"></i> Version Control</span>
+          <span><i class="bi bi-git me-2"></i> Version Control</span>
           <span class="cat-count">0</span>
         </a>
       </nav>
@@ -107,15 +144,32 @@
     <!-- Mobile Offcanvas Sidebar -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
       <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title fw-bold" id="mobileSidebarLabel">
-          <i class="bi bi-stack text-primary me-2"></i>Navigation
-        </h5>
+        <div class="d-flex align-items-center gap-2">
+          <div class="brand-logo-frame" style="width: 32px; height: 32px; padding: 3px;">
+            <img src="public/Madriaga_logo.svg" alt="Madriaga Logo" class="brand-logo-img">
+          </div>
+          <h5 class="offcanvas-title fw-bold mb-0" id="mobileSidebarLabel">
+            Madriaga <span class="brand-badge ms-1">EC-Tools</span>
+          </h5>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <div class="mb-3">
           <input type="text" id="mobileSearchInput" class="form-control" placeholder="Search tools or notes...">
         </div>
+        
+        <!-- Mobile Palette Switcher -->
+        <div class="mb-3 p-2 rounded-2 border mobile-palette-box">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="small fw-semibold text-muted">Theme Palette:</span>
+            <span class="badge bg-light text-dark border" id="mobileCurrentPaletteLabel">Warm Linen</span>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="mobileRotatePaletteBtn">
+            <i class="bi bi-palette2 me-1"></i> Rotate Color Scheme
+          </button>
+        </div>
+
         <div class="sidebar-title">Categories</div>
         <nav class="mb-4">
           <a href="#all" class="category-nav-link active" data-category="all" data-bs-dismiss="offcanvas">
@@ -123,27 +177,27 @@
             <span class="cat-count">0</span>
           </a>
           <a href="#tech-stacks" class="category-nav-link" data-category="Tech Stacks" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-code-slash me-2 text-info"></i> Tech Stacks</span>
+            <span><i class="bi bi-code-slash me-2"></i> Tech Stacks</span>
             <span class="cat-count">0</span>
           </a>
           <a href="#frameworks" class="category-nav-link" data-category="Frameworks" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-layers me-2 text-primary"></i> Frameworks</span>
+            <span><i class="bi bi-layers me-2"></i> Frameworks</span>
             <span class="cat-count">0</span>
           </a>
           <a href="#database" class="category-nav-link" data-category="Database" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-database me-2 text-success"></i> Database</span>
+            <span><i class="bi bi-database me-2"></i> Database</span>
             <span class="cat-count">0</span>
           </a>
           <a href="#open-source-skills" class="category-nav-link" data-category="Open Source Skills" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-robot me-2 text-warning"></i> Open Source Skills</span>
+            <span><i class="bi bi-robot me-2"></i> Open Source Skills</span>
             <span class="cat-count">0</span>
           </a>
           <a href="#online-platforms" class="category-nav-link" data-category="Online Platforms" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-globe me-2 text-danger"></i> Online Platforms</span>
+            <span><i class="bi bi-globe me-2"></i> Online Platforms</span>
             <span class="cat-count">0</span>
           </a>
           <a href="#version-control" class="category-nav-link" data-category="Version Control" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-git me-2" style="color: #f05032;"></i> Version Control</span>
+            <span><i class="bi bi-git me-2"></i> Version Control</span>
             <span class="cat-count">0</span>
           </a>
         </nav>
@@ -153,16 +207,16 @@
     <!-- Main Content Area -->
     <main class="app-main">
       <!-- Section Header -->
-      <section class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-2 border-bottom">
+      <section class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom">
         <div>
           <h1 class="h4 fw-bold mb-1" id="activeCategoryTitle">
-            <i class="bi bi-grid-fill me-2 text-primary"></i>All Tools & Resources
+            <i class="bi bi-grid-fill me-2 text-primary"></i>All Tools &amp; Resources
           </h1>
           <p class="text-muted small mb-0" id="activeCategorySubtitle">
             Explore your complete directory of stacks, frameworks, skills, and design tools.
           </p>
         </div>
-        <span class="badge bg-light text-secondary border px-3 py-2 fw-medium" id="toolCountBadge">0 tools</span>
+        <span class="badge border px-3 py-2 fw-medium tool-count-pill" id="toolCountBadge">0 tools</span>
       </section>
 
       <!-- Tools Grid -->
@@ -172,6 +226,102 @@
     </main>
 
   </div>
+
+  <!-- Credentials & Connect Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="row g-4 align-items-start">
+        
+        <!-- Brand & Personal Credentials -->
+        <div class="col-12 col-lg-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="brand-logo-frame footer-logo-frame">
+              <img src="public/Madriaga_logo.svg" alt="Madriaga Logo" class="brand-logo-img" width="40" height="40">
+            </div>
+            <div>
+              <h2 class="h5 fw-bold mb-0 footer-author-name">John Eduard Madriaga</h2>
+              <span class="footer-handle">@EduCode597</span>
+            </div>
+          </div>
+          <p class="footer-bio mb-3">
+            BSIT student at Polytechnic University of the Philippines (PUP Sto. Tomas). Aspiring Full-Stack Developer &amp; UI/UX Craftsman creating high-performance, user-centric web applications and curated developer architectures.
+          </p>
+          <div class="footer-cred-badges">
+            <span class="footer-cred-pill"><i class="bi bi-mortarboard-fill me-1"></i> PUP BSIT</span>
+            <span class="footer-cred-pill"><i class="bi bi-code-slash me-1"></i> Full-Stack</span>
+            <span class="footer-cred-pill"><i class="bi bi-palette-fill me-1"></i> UI/UX Design</span>
+            <span class="footer-cred-pill"><i class="bi bi-terminal-fill me-1"></i> Open Source</span>
+          </div>
+        </div>
+
+        <!-- Connect & Portfolio CTA -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <h3 class="footer-section-title">Let's Connect &amp; Collaborate</h3>
+          <p class="footer-connect-text mb-3">
+            Interested in connecting, discussing technical architectures, or exploring my projects? Visit my personal portfolio or reach out directly.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer" class="btn-portfolio-cta" title="Explore John Eduard Madriaga's Portfolio">
+              <i class="bi bi-globe2 me-2"></i>Visit Portfolio
+              <i class="bi bi-arrow-up-right ms-1"></i>
+            </a>
+            <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="btn-footer-secondary" title="View GitHub Profile">
+              <i class="bi bi-github me-1"></i>GitHub
+            </a>
+            <button type="button" class="btn-footer-secondary" id="footerCopyEmailBtn" data-email="educode597@gmail.com" title="Copy email address to clipboard">
+              <i class="bi bi-envelope-fill me-1"></i>Copy Email
+            </button>
+          </div>
+          <div class="footer-socials d-flex align-items-center gap-2">
+            <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="GitHub Profile" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.instagram.com/eduard_madriaga/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram Profile" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61587827691334" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook Profile" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="mailto:educode597@gmail.com" class="footer-social-link" title="Send Email" aria-label="Email">
+              <i class="bi bi-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5-Color Palette Showcase & Rotator -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="palette-showcase-box">
+            <div class="palette-box-title">
+              <i class="bi bi-palette2 me-1"></i>Active 5-Color System
+            </div>
+            <div class="palette-swatches-strip mb-2">
+              <div class="palette-swatch" style="background-color: #ffffff;" title="#ffffff (Crisp White)"><span class="swatch-label">#fff</span></div>
+              <div class="palette-swatch" style="background-color: #fff4e9;" title="#fff4e9 (Warm Linen)"><span class="swatch-label">#fff4e9</span></div>
+              <div class="palette-swatch" style="background-color: #828e82;" title="#828e82 (Muted Sage)"><span class="swatch-label">#828e82</span></div>
+              <div class="palette-swatch" style="background-color: #131b23;" title="#131b23 (Midnight Obsidian)"><span class="swatch-label">#131b23</span></div>
+              <div class="palette-swatch" style="background-color: #000000;" title="#000000 (Pitch Black)"><span class="swatch-label">#000</span></div>
+            </div>
+            <p class="palette-info-subtext mb-2">
+              A curated editorial palette revolving harmoniously across every element.
+            </p>
+            <button type="button" class="btn-rotate-mini" id="footerRotatePaletteBtn" title="Cycle through color scheme variations">
+              <i class="bi bi-arrow-repeat me-1"></i>Cycle Color Scheme
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar mt-4 pt-3 border-top d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <p class="footer-copyright mb-0">
+          &copy; 2026 <strong>John Eduard Madriaga</strong> (<a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer">EduCode</a>). Crafted with Taste &amp; Architectural Polish.
+        </p>
+        <button type="button" class="btn-back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
+          Back to Top <i class="bi bi-chevron-up ms-1"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
 
   <!-- Toast Notification -->
   <div class="custom-toast" id="customToast" role="status" aria-live="polite">

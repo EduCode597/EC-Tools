@@ -391,10 +391,107 @@
         }
       });
     }
+
+    // Palette Rotator triggers
+    const rotateBtns = [
+      document.getElementById('rotatePaletteBtn'),
+      document.getElementById('mobileRotatePaletteBtn'),
+      document.getElementById('footerRotatePaletteBtn')
+    ];
+
+    rotateBtns.forEach((btn) => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          rotatePalette();
+        });
+      }
+    });
+
+    // Swatches in footer: click to rotate
+    const swatches = document.querySelectorAll('.palette-swatch');
+    swatches.forEach((swatch) => {
+      swatch.addEventListener('click', () => {
+        rotatePalette();
+      });
+    });
+
+    // Footer Copy Email
+    const footerCopyEmailBtn = document.getElementById('footerCopyEmailBtn');
+    if (footerCopyEmailBtn) {
+      footerCopyEmailBtn.addEventListener('click', () => {
+        const email = footerCopyEmailBtn.getAttribute('data-email') || 'educode597@gmail.com';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(() => {
+            showToast(`Email copied: ${email}`, 'bi-envelope-check-fill');
+          }).catch(() => {
+            showToast(`Contact: ${email}`, 'bi-envelope-fill');
+          });
+        } else {
+          showToast(`Contact: ${email}`, 'bi-envelope-fill');
+        }
+      });
+    }
+
+    // Back to top smooth scroll
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 5-Hex Color Scheme Rotator System
+  // Palette: #ffffff - #fff4e9 - #828e82 - #131b23 - #000000
+  // --------------------------------------------------------------------------
+  const PALETTES = [
+    { id: 'warm-linen', name: 'Warm Linen', hex: '#fff4e9', desc: 'Warm Linen & Obsidian' },
+    { id: 'midnight-obsidian', name: 'Midnight Obsidian', hex: '#131b23', desc: 'Midnight Obsidian & Sage' },
+    { id: 'nordic-sage', name: 'Nordic Sage', hex: '#828e82', desc: 'Editorial Sage & Cream' },
+    { id: 'pitch-black', name: 'Pitch Obsidian', hex: '#000000', desc: 'Pitch Black & White' },
+    { id: 'crisp-alabaster', name: 'Crisp Alabaster', hex: '#ffffff', desc: 'Crisp Alabaster & Sage' }
+  ];
+  let currentPaletteIndex = 0;
+
+  function initPalette() {
+    const saved = localStorage.getItem('ec_tools_palette');
+    const idx = PALETTES.findIndex((p) => p.id === saved);
+    if (idx !== -1) {
+      currentPaletteIndex = idx;
+    } else {
+      currentPaletteIndex = 0;
+    }
+    applyPalette(PALETTES[currentPaletteIndex], false);
+  }
+
+  function applyPalette(palette, notify = false) {
+    document.documentElement.setAttribute('data-palette', palette.id);
+    localStorage.setItem('ec_tools_palette', palette.id);
+
+    const currentPaletteLabel = document.getElementById('currentPaletteLabel');
+    if (currentPaletteLabel) {
+      currentPaletteLabel.textContent = palette.name;
+    }
+
+    const mobileCurrentPaletteLabel = document.getElementById('mobileCurrentPaletteLabel');
+    if (mobileCurrentPaletteLabel) {
+      mobileCurrentPaletteLabel.textContent = palette.name;
+    }
+
+    if (notify) {
+      showToast(`Palette: ${palette.desc} (${palette.hex})`, 'bi-palette2');
+    }
+  }
+
+  function rotatePalette() {
+    currentPaletteIndex = (currentPaletteIndex + 1) % PALETTES.length;
+    applyPalette(PALETTES[currentPaletteIndex], true);
   }
 
   // Initialization
   document.addEventListener('DOMContentLoaded', () => {
+    initPalette();
     setupEventListeners();
     loadData();
   });
@@ -408,3 +505,4 @@
     };
   }
 })();
+

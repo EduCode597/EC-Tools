@@ -152,4 +152,40 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
     assert.ok(!appJs.includes('openAddModal'), 'openAddModal should be removed');
     assert.ok(!appJs.includes('btn-edit-tool'), 'btn-edit-tool should not be rendered');
   });
+
+  test('Madriaga_logo.svg is used as the main brand logo', () => {
+    const html = fs.readFileSync(indexPath, 'utf8');
+    const logoFile = path.join(__dirname, '..', 'public', 'Madriaga_logo.svg');
+    assert.ok(fs.existsSync(logoFile), 'public/Madriaga_logo.svg must exist');
+    assert.ok(html.includes('public/Madriaga_logo.svg'), 'index.html must reference public/Madriaga_logo.svg');
+    assert.ok(html.includes('brand-logo-frame'), 'index.html should have brand-logo-frame class');
+  });
+
+  test('5-hex color scheme palette is defined and rotatable', () => {
+    const css = fs.readFileSync(cssPath, 'utf8');
+    const hexCodes = ['#ffffff', '#fff4e9', '#828e82', '#131b23', '#000000'];
+    hexCodes.forEach(hex => {
+      assert.ok(css.toLowerCase().includes(hex.toLowerCase()), `styles.css must include hex code ${hex}`);
+    });
+
+    const themes = ['warm-linen', 'midnight-obsidian', 'nordic-sage', 'pitch-black', 'crisp-alabaster'];
+    themes.forEach(theme => {
+      assert.ok(css.includes(`data-palette="${theme}"`), `styles.css must define rotational theme ${theme}`);
+    });
+
+    const appJs = fs.readFileSync(appJsPath, 'utf8');
+    assert.ok(appJs.includes('rotatePalette'), 'app.js must define rotatePalette function');
+    assert.ok(appJs.includes('ec_tools_palette'), 'app.js must persist chosen palette in localStorage');
+  });
+
+  test('Footer contains author credentials and portfolio link', () => {
+    const html = fs.readFileSync(indexPath, 'utf8');
+    assert.ok(html.includes('<footer class="app-footer"'), 'index.html must contain app-footer element');
+    assert.ok(html.includes('https://educode597.github.io/'), 'Footer must contain link to personal portfolio');
+    assert.ok(html.includes('John Eduard Madriaga'), 'Footer must display author name');
+    assert.ok(html.includes('EduCode597'), 'Footer must reference EduCode handle');
+    assert.ok(html.includes('PUP BSIT'), 'Footer must reference educational credential');
+    assert.ok(html.includes('btn-portfolio-cta'), 'Footer must include portfolio CTA button');
+  });
 });
+
