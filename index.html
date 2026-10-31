@@ -206,122 +206,188 @@
 
     <!-- Main Content Area -->
     <main class="app-main">
-      <!-- Section Header -->
-      <section class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom">
-        <div>
-          <h1 class="h4 fw-bold mb-1" id="activeCategoryTitle">
-            <i class="bi bi-grid-fill me-2 text-primary"></i>All Tools &amp; Resources
-          </h1>
-          <p class="text-muted small mb-0" id="activeCategorySubtitle">
-            Explore your complete directory of stacks, frameworks, skills, and design tools.
-          </p>
-        </div>
-        <span class="badge border px-3 py-2 fw-medium tool-count-pill" id="toolCountBadge">0 tools</span>
-      </section>
+      <div class="app-content-body">
+        <!-- Section Header -->
+        <section class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom">
+          <div>
+            <h1 class="h4 fw-bold mb-1" id="activeCategoryTitle">
+              <i class="bi bi-grid-fill me-2 text-primary"></i>All Tools &amp; Resources
+            </h1>
+            <p class="text-muted small mb-0" id="activeCategorySubtitle">
+              Explore your complete directory of stacks, frameworks, skills, and design tools.
+            </p>
+          </div>
+          <span class="badge border px-3 py-2 fw-medium tool-count-pill" id="toolCountBadge">0 tools</span>
+        </section>
 
-      <!-- Tools Grid -->
-      <section id="toolsContainer" class="row g-3 g-lg-4" aria-live="polite">
-        <!-- Dynamically rendered tool cards -->
-      </section>
+        <!-- Tools Grid -->
+        <section id="toolsContainer" class="row g-3 g-lg-4" aria-live="polite">
+          <!-- Dynamically rendered tool cards -->
+        </section>
+      </div>
+
+      <!-- Credentials & Connect Footer (Full-Bleed Main Column Footer) -->
+      <footer class="app-footer">
+        <div class="footer-container">
+          <div class="row g-4 align-items-start">
+            
+            <!-- Brand & Personal Credentials -->
+            <div class="col-12 col-lg-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="brand-logo-frame footer-logo-frame">
+                  <img src="public/Madriaga_logo.svg" alt="Madriaga Logo" class="brand-logo-img" width="40" height="40">
+                </div>
+                <div>
+                  <h2 class="h5 fw-bold mb-0 footer-author-name">John Eduard Madriaga</h2>
+                  <span class="footer-handle">@EduCode597</span>
+                </div>
+              </div>
+              <p class="footer-bio mb-3">
+                BSIT student at Polytechnic University of the Philippines (PUP Sto. Tomas). Aspiring Full-Stack Developer &amp; UI/UX Craftsman creating high-performance, user-centric web applications and curated developer architectures.
+              </p>
+              <div class="footer-cred-badges">
+                <span class="footer-cred-pill"><i class="bi bi-mortarboard-fill me-1"></i> PUP BSIT</span>
+                <span class="footer-cred-pill"><i class="bi bi-code-slash me-1"></i> Full-Stack</span>
+                <span class="footer-cred-pill"><i class="bi bi-palette-fill me-1"></i> UI/UX Design</span>
+                <span class="footer-cred-pill"><i class="bi bi-terminal-fill me-1"></i> Open Source</span>
+              </div>
+            </div>
+
+            <!-- Connect & Portfolio CTA -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <h3 class="footer-section-title">Let's Connect &amp; Collaborate</h3>
+              <p class="footer-connect-text mb-3">
+                Interested in connecting, discussing technical architectures, or exploring my projects? Visit my personal portfolio or reach out directly.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer" class="btn-portfolio-cta" title="Explore John Eduard Madriaga's Portfolio">
+                  <i class="bi bi-globe2 me-2"></i>Visit Portfolio
+                  <i class="bi bi-arrow-up-right ms-1"></i>
+                </a>
+                <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="btn-footer-secondary" title="View GitHub Profile">
+                  <i class="bi bi-github me-1"></i>GitHub
+                </a>
+                <button type="button" class="btn-footer-secondary" id="footerCopyEmailBtn" data-email="educode597@gmail.com" title="Copy email address to clipboard">
+                  <i class="bi bi-envelope-fill me-1"></i>Copy Email
+                </button>
+              </div>
+              <div class="footer-socials d-flex align-items-center gap-2">
+                <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="GitHub Profile" aria-label="GitHub">
+                  <i class="bi bi-github"></i>
+                </a>
+                <a href="https://www.instagram.com/eduard_madriaga/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram Profile" aria-label="Instagram">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61587827691334" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook Profile" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a href="mailto:educode597@gmail.com" class="footer-social-link" title="Send Email" aria-label="Email">
+                  <i class="bi bi-envelope"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 5-Color Palette Showcase & Rotator Card (Redesigned for Maximum Legibility & Style) -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="palette-showcase-box">
+                
+                <div class="palette-box-header d-flex align-items-center justify-content-between mb-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="palette-header-icon">
+                      <i class="bi bi-palette2"></i>
+                    </div>
+                    <div>
+                      <h4 class="palette-box-title mb-0">5-Color System</h4>
+                      <div class="palette-box-subtitle">
+                        Active: <span id="footerActiveThemeBadge" class="palette-active-name">Warm Linen</span>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="palette-step-counter" id="footerRotatorStep">1 / 5</span>
+                </div>
+
+                <p class="palette-info-subtext mb-3">
+                  Canonical 5-color rotation. Click any swatch or the button below to cycle themes.
+                </p>
+
+                <!-- 5 Individual Interactive Swatch Rows with 100% Guaranteed Readability -->
+                <div class="palette-swatch-list mb-3" id="paletteSwatchList">
+                  
+                  <div class="swatch-row" role="button" tabindex="0" data-palette="crisp-alabaster" title="Crisp White (#ffffff)">
+                    <div class="swatch-color-pill" style="background-color: #ffffff; border: 1.5px solid rgba(130, 142, 130, 0.55);"></div>
+                    <div class="swatch-meta">
+                      <span class="swatch-label-name">Crisp White</span>
+                      <span class="swatch-role">Cards &amp; Contrast</span>
+                    </div>
+                    <code class="swatch-hex-pill">#ffffff</code>
+                  </div>
+
+                  <div class="swatch-row active-swatch-row" role="button" tabindex="0" data-palette="warm-linen" title="Warm Linen (#fff4e9)">
+                    <div class="swatch-color-pill" style="background-color: #fff4e9; border: 1.5px solid rgba(130, 142, 130, 0.55);"></div>
+                    <div class="swatch-meta">
+                      <span class="swatch-label-name">Warm Linen</span>
+                      <span class="swatch-role">Warm Canvas</span>
+                    </div>
+                    <code class="swatch-hex-pill">#fff4e9</code>
+                  </div>
+
+                  <div class="swatch-row" role="button" tabindex="0" data-palette="nordic-sage" title="Muted Sage (#828e82)">
+                    <div class="swatch-color-pill" style="background-color: #828e82; border: 1.5px solid rgba(255, 255, 255, 0.35);"></div>
+                    <div class="swatch-meta">
+                      <span class="swatch-label-name">Muted Sage</span>
+                      <span class="swatch-role">Botanical Accent</span>
+                    </div>
+                    <code class="swatch-hex-pill">#828e82</code>
+                  </div>
+
+                  <div class="swatch-row" role="button" tabindex="0" data-palette="midnight-obsidian" title="Midnight Obsidian (#131b23)">
+                    <div class="swatch-color-pill" style="background-color: #131b23; border: 1.5px solid rgba(130, 142, 130, 0.65);"></div>
+                    <div class="swatch-meta">
+                      <span class="swatch-label-name">Obsidian Slate</span>
+                      <span class="swatch-role">Midnight Dark</span>
+                    </div>
+                    <code class="swatch-hex-pill">#131b23</code>
+                  </div>
+
+                  <div class="swatch-row" role="button" tabindex="0" data-palette="pitch-black" title="Pitch Black (#000000)">
+                    <div class="swatch-color-pill" style="background-color: #000000; border: 1.5px solid rgba(130, 142, 130, 0.65);"></div>
+                    <div class="swatch-meta">
+                      <span class="swatch-label-name">Pitch Black</span>
+                      <span class="swatch-role">Pure Depth</span>
+                    </div>
+                    <code class="swatch-hex-pill">#000000</code>
+                  </div>
+
+                </div>
+
+                <!-- Rotate Action Button -->
+                <button type="button" class="btn-rotate-palette-action w-100" id="footerRotatePaletteBtn" title="Cycle through color scheme variations">
+                  <span class="d-flex align-items-center gap-2">
+                    <i class="bi bi-arrow-repeat spin-icon"></i>
+                    <span class="fw-semibold">Rotate Color Scheme</span>
+                  </span>
+                  <i class="bi bi-chevron-right ms-auto opacity-75"></i>
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Bar -->
+          <div class="footer-bottom-bar mt-4 pt-3 border-top d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <p class="footer-copyright mb-0">
+              &copy; 2026 <strong>John Eduard Madriaga</strong> (<a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer">EduCode</a>). Crafted with Taste &amp; Architectural Polish.
+            </p>
+            <button type="button" class="btn-back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
+              Back to Top <i class="bi bi-chevron-up ms-1"></i>
+            </button>
+          </div>
+        </div>
+      </footer>
     </main>
 
   </div>
-
-  <!-- Credentials & Connect Footer -->
-  <footer class="app-footer">
-    <div class="footer-container">
-      <div class="row g-4 align-items-start">
-        
-        <!-- Brand & Personal Credentials -->
-        <div class="col-12 col-lg-5">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="brand-logo-frame footer-logo-frame">
-              <img src="public/Madriaga_logo.svg" alt="Madriaga Logo" class="brand-logo-img" width="40" height="40">
-            </div>
-            <div>
-              <h2 class="h5 fw-bold mb-0 footer-author-name">John Eduard Madriaga</h2>
-              <span class="footer-handle">@EduCode597</span>
-            </div>
-          </div>
-          <p class="footer-bio mb-3">
-            BSIT student at Polytechnic University of the Philippines (PUP Sto. Tomas). Aspiring Full-Stack Developer &amp; UI/UX Craftsman creating high-performance, user-centric web applications and curated developer architectures.
-          </p>
-          <div class="footer-cred-badges">
-            <span class="footer-cred-pill"><i class="bi bi-mortarboard-fill me-1"></i> PUP BSIT</span>
-            <span class="footer-cred-pill"><i class="bi bi-code-slash me-1"></i> Full-Stack</span>
-            <span class="footer-cred-pill"><i class="bi bi-palette-fill me-1"></i> UI/UX Design</span>
-            <span class="footer-cred-pill"><i class="bi bi-terminal-fill me-1"></i> Open Source</span>
-          </div>
-        </div>
-
-        <!-- Connect & Portfolio CTA -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <h3 class="footer-section-title">Let's Connect &amp; Collaborate</h3>
-          <p class="footer-connect-text mb-3">
-            Interested in connecting, discussing technical architectures, or exploring my projects? Visit my personal portfolio or reach out directly.
-          </p>
-          <div class="d-flex flex-wrap gap-2 mb-3">
-            <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer" class="btn-portfolio-cta" title="Explore John Eduard Madriaga's Portfolio">
-              <i class="bi bi-globe2 me-2"></i>Visit Portfolio
-              <i class="bi bi-arrow-up-right ms-1"></i>
-            </a>
-            <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="btn-footer-secondary" title="View GitHub Profile">
-              <i class="bi bi-github me-1"></i>GitHub
-            </a>
-            <button type="button" class="btn-footer-secondary" id="footerCopyEmailBtn" data-email="educode597@gmail.com" title="Copy email address to clipboard">
-              <i class="bi bi-envelope-fill me-1"></i>Copy Email
-            </button>
-          </div>
-          <div class="footer-socials d-flex align-items-center gap-2">
-            <a href="https://github.com/EduCode597" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="GitHub Profile" aria-label="GitHub">
-              <i class="bi bi-github"></i>
-            </a>
-            <a href="https://www.instagram.com/eduard_madriaga/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram Profile" aria-label="Instagram">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61587827691334" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook Profile" aria-label="Facebook">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="mailto:educode597@gmail.com" class="footer-social-link" title="Send Email" aria-label="Email">
-              <i class="bi bi-envelope"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 5-Color Palette Showcase & Rotator -->
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="palette-showcase-box">
-            <div class="palette-box-title">
-              <i class="bi bi-palette2 me-1"></i>Active 5-Color System
-            </div>
-            <div class="palette-swatches-strip mb-2">
-              <div class="palette-swatch" style="background-color: #ffffff;" title="#ffffff (Crisp White)"><span class="swatch-label">#fff</span></div>
-              <div class="palette-swatch" style="background-color: #fff4e9;" title="#fff4e9 (Warm Linen)"><span class="swatch-label">#fff4e9</span></div>
-              <div class="palette-swatch" style="background-color: #828e82;" title="#828e82 (Muted Sage)"><span class="swatch-label">#828e82</span></div>
-              <div class="palette-swatch" style="background-color: #131b23;" title="#131b23 (Midnight Obsidian)"><span class="swatch-label">#131b23</span></div>
-              <div class="palette-swatch" style="background-color: #000000;" title="#000000 (Pitch Black)"><span class="swatch-label">#000</span></div>
-            </div>
-            <p class="palette-info-subtext mb-2">
-              A curated editorial palette revolving harmoniously across every element.
-            </p>
-            <button type="button" class="btn-rotate-mini" id="footerRotatePaletteBtn" title="Cycle through color scheme variations">
-              <i class="bi bi-arrow-repeat me-1"></i>Cycle Color Scheme
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="footer-bottom-bar mt-4 pt-3 border-top d-flex flex-wrap align-items-center justify-content-between gap-2">
-        <p class="footer-copyright mb-0">
-          &copy; 2026 <strong>John Eduard Madriaga</strong> (<a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer">EduCode</a>). Crafted with Taste &amp; Architectural Polish.
-        </p>
-        <button type="button" class="btn-back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
-          Back to Top <i class="bi bi-chevron-up ms-1"></i>
-        </button>
-      </div>
-    </div>
-  </footer>
 
   <!-- Toast Notification -->
   <div class="custom-toast" id="customToast" role="status" aria-live="polite">

@@ -407,11 +407,25 @@
       }
     });
 
-    // Swatches in footer: click to rotate
-    const swatches = document.querySelectorAll('.palette-swatch');
-    swatches.forEach((swatch) => {
-      swatch.addEventListener('click', () => {
-        rotatePalette();
+    // Swatch rows in footer: click to activate palette
+    const swatchRows = document.querySelectorAll('.swatch-row');
+    swatchRows.forEach((row) => {
+      row.addEventListener('click', () => {
+        const palId = row.getAttribute('data-palette');
+        const targetIdx = PALETTES.findIndex((p) => p.id === palId);
+        if (targetIdx !== -1) {
+          currentPaletteIndex = targetIdx;
+          applyPalette(PALETTES[currentPaletteIndex], true);
+        } else {
+          rotatePalette();
+        }
+      });
+
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          row.click();
+        }
       });
     });
 
@@ -478,6 +492,26 @@
     if (mobileCurrentPaletteLabel) {
       mobileCurrentPaletteLabel.textContent = palette.name;
     }
+
+    const footerActiveThemeBadge = document.getElementById('footerActiveThemeBadge');
+    if (footerActiveThemeBadge) {
+      footerActiveThemeBadge.textContent = palette.name;
+    }
+
+    const footerRotatorStep = document.getElementById('footerRotatorStep');
+    if (footerRotatorStep) {
+      footerRotatorStep.textContent = `${currentPaletteIndex + 1} / ${PALETTES.length}`;
+    }
+
+    // Highlight active swatch row
+    const swatchRows = document.querySelectorAll('.swatch-row');
+    swatchRows.forEach((row) => {
+      if (row.getAttribute('data-palette') === palette.id) {
+        row.classList.add('active-swatch-row');
+      } else {
+        row.classList.remove('active-swatch-row');
+      }
+    });
 
     if (notify) {
       showToast(`Palette: ${palette.desc} (${palette.hex})`, 'bi-palette2');
