@@ -135,6 +135,15 @@
     "tags": ["ai-skills", "anthropic", "tool-use", "prompts"]
   },
   {
+    "id": "graphify",
+    "name": "Graphify",
+    "category": "Open Source Skills",
+    "url": "https://github.com/Graphify-Labs/graphify",
+    "description": "Converts codebases and documentation into persistent, navigable knowledge graphs with community clustering, visual HTML topologies, and GraphRAG querying.",
+    "howToUse": "Run /graphify in root to generate interactive HTML maps (graph.html) and audit reports (GRAPH_REPORT.md). Use graphify query '<question>' or graphify path 'Auth' 'Database' to map dependencies, trace god nodes before refactoring, and export --wiki or --obsidian vaults for project documentation.",
+    "tags": ["ai-skills", "knowledge-graph", "architecture", "graphrag", "visualization"]
+  },
+  {
     "id": "react-bits",
     "name": "React Bits",
     "category": "Online Platforms",

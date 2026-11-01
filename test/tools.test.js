@@ -46,6 +46,7 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       'wayfinder',
       'taste',
       'claude skills',
+      'graphify',
       'react bits',
       'figma',
       'untitled ui',

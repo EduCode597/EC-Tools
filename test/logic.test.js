@@ -41,7 +41,7 @@ describe('EC-Tools Core Business Logic', () => {
     assert.deepEqual(databases.map(d => d.name).sort(), ['MySQL', 'Supabase']);
 
     const skills = filterTools(defaultTools, { category: 'Open Source Skills' });
-    assert.equal(skills.length, 5);
+    assert.equal(skills.length, 6);
   });
 
   test('Search filter matches by tool name', () => {
@@ -51,6 +51,11 @@ describe('EC-Tools Core Business Logic', () => {
     const names = reactMatch.map(t => t.name);
     assert.ok(names.includes('React'));
     assert.ok(names.includes('React Bits'));
+
+    // Verify Graphify search match
+    const graphifyMatch = filterTools(defaultTools, { query: 'Graphify' });
+    assert.equal(graphifyMatch.length, 1);
+    assert.equal(graphifyMatch[0].id, 'graphify');
   });
 
   test('Search filter matches inside howToUse notes', () => {
@@ -62,7 +67,7 @@ describe('EC-Tools Core Business Logic', () => {
 
   test('Filter by tag returns tools with that tag', () => {
     const aiTools = filterTools(defaultTools, { tag: 'ai-skills' });
-    assert.equal(aiTools.length, 5);
+    assert.equal(aiTools.length, 6);
     aiTools.forEach(t => assert.ok(t.tags.includes('ai-skills')));
   });
 

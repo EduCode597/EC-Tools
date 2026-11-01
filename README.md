@@ -13,7 +13,7 @@ Designed to easily navigate your tools, access official documentation, and refer
   - ⚡ **Frameworks**: Bootstrap 5, Tailwind CSS
   - 🗄️ **Database**: MySQL, Supabase
   - 🐙 **Version Control**: GitHub
-  - 🧠 **Open Source Skills**: Superpowers, Ponytail, Wayfinder, Taste, Claude Skills
+  - 🧠 **Open Source Skills**: Superpowers, Ponytail, Wayfinder, Taste, Claude Skills, Graphify
   - 🌐 **Online Platforms**: React Bits, Figma, Untitled UI
 - **Practical Notes Per Tool**: Dedicated *"💡 How to Use in Future Projects"* block with cheat-sheet tips, recommended setups, and architectural guidance.
 - **Real-Time Live Search**: Instant filtering across tool names, categories, descriptions, tags, and how-to notes (shortcut: press `/`).
