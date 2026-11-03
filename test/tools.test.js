@@ -50,7 +50,11 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       'react bits',
       'figma',
       'untitled ui',
-      'github'
+      'github',
+      'render',
+      'vercel',
+      'redis',
+      'brevo'
     ];
 
     for (const req of requiredTools) {
@@ -79,7 +83,9 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       'Frameworks',
       'Database',
       'Open Source Skills',
+      'Open Source Tools',
       'Online Platforms',
+      'Deployment Tools',
       'Version Control'
     ];
 
@@ -117,6 +123,12 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
     assert.ok(!html.includes('id="toolModal"'), 'toolModal should be removed for GitHub Pages');
     assert.ok(!html.includes('id="toolForm"'), 'toolForm should be removed for GitHub Pages');
     assert.ok(!html.includes('id="dataModal"'), 'dataModal should be removed for GitHub Pages');
+
+    // Verification: New sidebar categories exist in both desktop and mobile navs
+    const deploymentMatches = html.match(/data-category="Deployment Tools"/g) || [];
+    assert.equal(deploymentMatches.length, 2, 'Deployment Tools category should appear in both desktop and mobile sidebars');
+    const openSourceToolsMatches = html.match(/data-category="Open Source Tools"/g) || [];
+    assert.equal(openSourceToolsMatches.length, 2, 'Open Source Tools category should appear in both desktop and mobile sidebars');
   });
 
   test('styles.css contains required design classes', () => {
@@ -130,7 +142,9 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       '.tool-how-to',
       '.category-nav-link',
       '.tag-pill',
-      '.custom-toast'
+      '.custom-toast',
+      '.cat-deployment-tools',
+      '.cat-open-source-tools'
     ];
 
     requiredClasses.forEach(cls => {

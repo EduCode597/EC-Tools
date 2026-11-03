@@ -714,9 +714,17 @@ a:hover {
   background-color: rgba(19, 27, 35, 0.08);
   border-color: var(--border-color);
 }
+.cat-open-source-tools {
+  background-color: rgba(130, 142, 130, 0.2);
+  border-color: rgba(130, 142, 130, 0.4);
+}
 .cat-online-platforms {
   background-color: rgba(130, 142, 130, 0.24);
   border-color: rgba(130, 142, 130, 0.45);
+}
+.cat-deployment-tools {
+  background-color: var(--primary-subtle);
+  border-color: var(--border-color);
 }
 .cat-version-control {
   background-color: var(--primary-subtle);

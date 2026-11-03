@@ -182,6 +182,42 @@ const DEFAULT_TOOLS = [
     "description": "Cloud-based hosting service for Git repositories with issue tracking, pull requests, and automated CI/CD workflows.",
     "howToUse": "Use for repository versioning, GitHub Actions automation, GitHub Pages static hosting, issue management, and collaborative code reviews via Pull Requests.",
     "tags": ["version-control", "git", "ci-cd", "collaboration", "hosting"]
+  },
+  {
+    "id": "render",
+    "name": "Render",
+    "category": "Deployment Tools",
+    "url": "https://render.com/docs",
+    "description": "Unified cloud platform to build and run web services, backend APIs, cron jobs, and static sites with automatic Git deployments.",
+    "howToUse": "Use for deploying full-stack backends (Node.js, Python), background workers, and web services. Connect directly to GitHub branches for zero-downtime auto-deploys and configure environment variables via the Render dashboard or render.yaml blueprints.",
+    "tags": ["deployment", "cloud", "hosting", "backend", "paas"]
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "category": "Deployment Tools",
+    "url": "https://vercel.com/docs",
+    "description": "Frontend cloud platform optimized for React, Next.js, and static web apps with instant edge network deployment and preview URLs.",
+    "howToUse": "Ideal for deploying React/Vite frontends, serverless API routes, and static sites. Link your GitHub repo to get automatic PR preview deployments, instant rollbacks, and custom domain SSL out of the box.",
+    "tags": ["deployment", "frontend", "serverless", "hosting", "edge"]
+  },
+  {
+    "id": "redis",
+    "name": "Redis",
+    "category": "Open Source Tools",
+    "url": "https://redis.io/docs/latest/",
+    "description": "Open-source, in-memory data structure store used as a high-speed cache, session store, rate limiter, and message broker.",
+    "howToUse": "Use to cache expensive API responses or database queries, store user sessions, and manage API rate limiting or background job queues (e.g., with BullMQ). Set TTLs on cache keys to keep memory fresh.",
+    "tags": ["open-source", "caching", "in-memory", "performance", "backend"]
+  },
+  {
+    "id": "brevo",
+    "name": "Brevo",
+    "category": "Open Source Tools",
+    "url": "https://developers.brevo.com/",
+    "description": "Transactional email, SMTP relay, and messaging API platform with open-source SDKs for automated notifications and campaigns.",
+    "howToUse": "Integrate via REST API or SMTP to send transactional emails (OTP verification codes, password resets, welcome emails, and system alerts). Store your API key securely in .env and use dynamic templates for consistent branding.",
+    "tags": ["open-source", "email", "smtp", "transactional", "api"]
   }
 ];
 

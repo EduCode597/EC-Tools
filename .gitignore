@@ -1,0 +1,8 @@
+# Local specs and plans
+docs/
+
+# Dependencies & OS files
+node_modules/
+.DS_Store
+Thumbs.db
+

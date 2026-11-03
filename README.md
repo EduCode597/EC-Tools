@@ -12,8 +12,10 @@ Designed to easily navigate your tools, access official documentation, and refer
   - 💻 **Tech Stacks**: HTML5, CSS3, JavaScript (ES6+), React, Python, Node.js
   - ⚡ **Frameworks**: Bootstrap 5, Tailwind CSS
   - 🗄️ **Database**: MySQL, Supabase
+  - ☁️ **Deployment Tools**: Render, Vercel
   - 🐙 **Version Control**: GitHub
   - 🧠 **Open Source Skills**: Superpowers, Ponytail, Wayfinder, Taste, Claude Skills, Graphify
+  - 📦 **Open Source Tools**: Redis, Brevo
   - 🌐 **Online Platforms**: React Bits, Figma, Untitled UI
 - **Practical Notes Per Tool**: Dedicated *"💡 How to Use in Future Projects"* block with cheat-sheet tips, recommended setups, and architectural guidance.
 - **Real-Time Live Search**: Instant filtering across tool names, categories, descriptions, tags, and how-to notes (shortcut: press `/`).
@@ -27,11 +29,13 @@ Designed to easily navigate your tools, access official documentation, and refer
 ## 🌐 Deploy to GitHub Pages
 
 1. Push your repository to GitHub:
+
    ```bash
    git add .
    git commit -m "Deploy EC-Tools to GitHub Pages"
    git push origin main
    ```
+
 2. In your GitHub repository:
    - Go to **Settings** > **Pages** (under "Code and automation").
    - Under **Build and deployment** > **Source**, choose **Deploy from a branch**.
@@ -44,8 +48,10 @@ Designed to easily navigate your tools, access official documentation, and refer
 ## ✏️ How to Add or Update Tools (For the Author)
 
 Since the site is cleanly decoupled from client-side tampering, you manage your tools safely directly through Git:
+
 1. Open [`data/tools.json`](data/tools.json) (and [`data/tools.js`](data/tools.js)).
 2. Add your new tool entry:
+
    ```json
    {
      "id": "tool-id",
@@ -57,6 +63,7 @@ Since the site is cleanly decoupled from client-side tampering, you manage your 
      "tags": ["frontend", "tool"]
    }
    ```
+
 3. Commit and push: GitHub Pages updates your live site automatically!
 
 ---
@@ -83,6 +90,7 @@ EC-Tools/
 ## 🧪 Running Automated Tests
 
 Run the built-in test suites using Node.js:
+
 ```bash
 node --test test/*.test.js
 ```

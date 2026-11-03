@@ -42,6 +42,14 @@ describe('EC-Tools Core Business Logic', () => {
 
     const skills = filterTools(defaultTools, { category: 'Open Source Skills' });
     assert.equal(skills.length, 6);
+
+    const deploymentTools = filterTools(defaultTools, { category: 'Deployment Tools' });
+    assert.equal(deploymentTools.length, 2);
+    assert.deepEqual(deploymentTools.map(d => d.name).sort(), ['Render', 'Vercel']);
+
+    const openSourceTools = filterTools(defaultTools, { category: 'Open Source Tools' });
+    assert.equal(openSourceTools.length, 2);
+    assert.deepEqual(openSourceTools.map(d => d.name).sort(), ['Brevo', 'Redis']);
   });
 
   test('Search filter matches by tool name', () => {
