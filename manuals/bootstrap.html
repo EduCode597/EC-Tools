@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="warm-linen">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 — User Manual | Madriaga EC-Tools</title>
+  <meta name="description" content="README user manual and practical project guide for Bootstrap 5 (Frameworks) in EC-Tools by John Eduard Madriaga.">
+  <link rel="icon" type="image/svg+xml" href="../public/Madriaga_logo.svg">
+
+  <!-- Anti-FOUT Theme Initializer -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const allowed = ['warm-linen', 'midnight-obsidian', 'nordic-sage', 'pitch-black', 'crisp-alabaster'];
+        if (saved && allowed.includes(saved)) {
+          document.documentElement.setAttribute('data-palette', saved);
+        } else {
+          document.documentElement.setAttribute('data-palette', 'warm-linen');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS & Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header d-flex align-items-center px-3 px-lg-4 justify-content-between">
+    <div class="d-flex align-items-center gap-3">
+      <a href="../index.html" class="brand-link d-flex align-items-center gap-2 text-decoration-none">
+        <div class="brand-logo-frame">
+          <img src="../public/Madriaga_logo.svg" alt="Madriaga Brand Logo" class="brand-logo-img" width="34" height="34">
+        </div>
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center gap-2">
+            <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
+            <span class="brand-badge">EC-Tools</span>
+          </div>
+          <span class="brand-subtext d-none d-sm-inline">Tool Manual &bull; README Guide</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <a href="../index.html" class="btn-back-directory" title="Return to All Tools Directory">
+        <i class="bi bi-arrow-left"></i>
+        <span>Back to All Tools</span>
+      </a>
+
+      <!-- Interactive 5-Hex Palette Rotator -->
+      <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
+        <i class="bi bi-palette2"></i>
+        <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
+        <span class="palette-swatch-preview" aria-hidden="true">
+          <span class="swatch-dot" style="background-color: #ffffff;"></span>
+          <span class="swatch-dot" style="background-color: #fff4e9;"></span>
+          <span class="swatch-dot" style="background-color: #828e82;"></span>
+          <span class="swatch-dot" style="background-color: #131b23;"></span>
+          <span class="swatch-dot" style="background-color: #000000;"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Manual Content -->
+  <main class="app-main">
+    <div class="manual-wrapper">
+
+      <!-- Breadcrumb Navigation -->
+      <nav class="manual-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html"><i class="bi bi-grid-fill me-1"></i>All Tools</a>
+        <span>/</span>
+        <span>Frameworks</span>
+        <span>/</span>
+        <strong class="text-main">Bootstrap 5</strong>
+      </nav>
+
+      <!-- README Manual Card -->
+      <article class="manual-readme-card">
+
+        <!-- Hero Header -->
+        <header class="manual-hero">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+            <span class="manual-readme-badge">
+              <i class="bi bi-book-half"></i> README.md &bull; User Manual
+            </span>
+            <span class="tool-category-badge cat-frameworks">
+              Frameworks
+            </span>
+          </div>
+
+          <h1 class="manual-title">Bootstrap 5</h1>
+          <p class="manual-lead">Powerful, extensible, and feature-packed frontend toolkit with responsive grid, prebuilt components, and utility classes.</p>
+
+          <div class="manual-meta-bar">
+            <div class="tool-card-tags">
+              <span class="card-tag">#frontend</span>
+                <span class="card-tag">#css-framework</span>
+                <span class="card-tag">#responsive</span>
+                <span class="card-tag">#components</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener noreferrer" class="btn-open-doc" title="Open official documentation">
+                Official Docs <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Manual Body Sections -->
+        <div class="manual-body">
+
+          <!-- Section 1: What It Is -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-info-circle-fill"></i> What It Is
+            </h2>
+            <p class="manual-text">Bootstrap 5 is a battle-tested frontend toolkit providing a 12-column responsive grid system, accessible interactive components (offcanvas drawers, modals, dropdowns), and utility classes.</p>
+            <p class="manual-text">Unlike older versions, Bootstrap 5 has zero jQuery dependency and exposes extensive CSS custom properties, making it easy to pair its layout utilities with your own bespoke brand palette.</p>
+          </section>
+
+          <!-- Section 2: How It Helps With Your Projects -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-rocket-takeoff-fill"></i> How It Helps With Your Projects
+            </h2>
+            <ul class="manual-list">
+              <li><strong>Instant Responsive Grid &amp; Breakpoints:</strong> Build mobile-first layouts in minutes using row, col-12, col-md-6, and col-xl-4 without writing repetitive media queries.</li>
+              <li><strong>Accessible Interactive Primitives:</strong> Get keyboard-accessible mobile offcanvas sidebars, collapses, and tooltips wired up via simple data-bs-* attributes.</li>
+              <li><strong>Pairs Cleanly with Custom Design Systems:</strong> Use Bootstrap for structural spacing and responsive visibility (d-none d-lg-block) while layering your own custom aesthetic tokens on top.</li>
+            </ul>
+            <div class="manual-callout">
+              <strong><i class="bi bi-lightbulb-fill me-1"></i> When to Reach for Bootstrap 5:</strong>
+              Use Bootstrap 5 when you want reliable responsive grids, mobile offcanvas navigation, and spacing utilities right from a CDN with zero build configuration.
+            </div>
+          </section>
+
+          <!-- Section 3: How to Use It -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-terminal-fill"></i> How to Use It
+            </h2>
+            <p class="manual-text">Ideal for fast prototyping and internal personal tools. Use the container-fluid + row + col system for responsive layouts, modals for overlays, and customize via CSS variables without bloating your build.</p>
+            <ol class="manual-list">
+              <li>Load Bootstrap 5 CSS and Bootstrap Icons from jsDelivr CDN, then link your custom styles.css right after to override tokens cleanly.</li>
+              <li>Use responsive column classes (row g-3 g-lg-4 with col-12 col-md-6 col-xl-4) for balanced card grids.</li>
+              <li>Use offcanvas-start for mobile navigation drawers that automatically handle focus trapping and backdrop dismissal.</li>
+            </ol>
+            <pre class="manual-code-block"><code>&lt;div class=&quot;row g-3 g-lg-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-xl-4&quot;&gt;
+    &lt;div class=&quot;tool-card&quot;&gt;
+      &lt;!-- Responsive card content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </section>
+
+        </div>
+
+        <!-- Footer Navigation inside Card -->
+        <footer class="manual-footer-nav">
+          <a href="../index.html" class="btn-back-directory">
+            <i class="bi bi-arrow-left"></i> Back to All Tools
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <a href="nodejs.html" class="btn-secondary-custom" title="Previous Tool: Node.js">
+              <i class="bi bi-chevron-left"></i> Node.js
+            </a>
+            <a href="tailwind.html" class="btn-secondary-custom" title="Next Tool: Tailwind CSS">
+              Tailwind CSS <i class="bi bi-chevron-right"></i>
+            </a>
+            <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener noreferrer" class="btn-open-doc">
+              Official Reference <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </footer>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Theme Rotator Script -->
+  <script>
+    (function () {
+      const PALETTES = [
+        { id: 'warm-linen', name: 'Warm Linen' },
+        { id: 'midnight-obsidian', name: 'Midnight Obsidian' },
+        { id: 'nordic-sage', name: 'Nordic Sage' },
+        { id: 'pitch-black', name: 'Pitch Obsidian' },
+        { id: 'crisp-alabaster', name: 'Crisp Alabaster' }
+      ];
+      let currentIdx = 0;
+      const saved = localStorage.getItem('ec_tools_palette');
+      const found = PALETTES.findIndex(p => p.id === saved);
+      if (found !== -1) currentIdx = found;
+
+      function updateLabel() {
+        const label = document.getElementById('currentPaletteLabel');
+        if (label) label.textContent = PALETTES[currentIdx].name;
+      }
+      updateLabel();
+
+      const btn = document.getElementById('rotatePaletteBtn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          currentIdx = (currentIdx + 1) % PALETTES.length;
+          const next = PALETTES[currentIdx];
+          document.documentElement.setAttribute('data-palette', next.id);
+          localStorage.setItem('ec_tools_palette', next.id);
+          updateLabel();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

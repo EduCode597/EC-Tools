@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="warm-linen">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Bits — User Manual | Madriaga EC-Tools</title>
+  <meta name="description" content="README user manual and practical project guide for React Bits (Online Platforms) in EC-Tools by John Eduard Madriaga.">
+  <link rel="icon" type="image/svg+xml" href="../public/Madriaga_logo.svg">
+
+  <!-- Anti-FOUT Theme Initializer -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const allowed = ['warm-linen', 'midnight-obsidian', 'nordic-sage', 'pitch-black', 'crisp-alabaster'];
+        if (saved && allowed.includes(saved)) {
+          document.documentElement.setAttribute('data-palette', saved);
+        } else {
+          document.documentElement.setAttribute('data-palette', 'warm-linen');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS & Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header d-flex align-items-center px-3 px-lg-4 justify-content-between">
+    <div class="d-flex align-items-center gap-3">
+      <a href="../index.html" class="brand-link d-flex align-items-center gap-2 text-decoration-none">
+        <div class="brand-logo-frame">
+          <img src="../public/Madriaga_logo.svg" alt="Madriaga Brand Logo" class="brand-logo-img" width="34" height="34">
+        </div>
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center gap-2">
+            <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
+            <span class="brand-badge">EC-Tools</span>
+          </div>
+          <span class="brand-subtext d-none d-sm-inline">Tool Manual &bull; README Guide</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <a href="../index.html" class="btn-back-directory" title="Return to All Tools Directory">
+        <i class="bi bi-arrow-left"></i>
+        <span>Back to All Tools</span>
+      </a>
+
+      <!-- Interactive 5-Hex Palette Rotator -->
+      <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
+        <i class="bi bi-palette2"></i>
+        <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
+        <span class="palette-swatch-preview" aria-hidden="true">
+          <span class="swatch-dot" style="background-color: #ffffff;"></span>
+          <span class="swatch-dot" style="background-color: #fff4e9;"></span>
+          <span class="swatch-dot" style="background-color: #828e82;"></span>
+          <span class="swatch-dot" style="background-color: #131b23;"></span>
+          <span class="swatch-dot" style="background-color: #000000;"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Manual Content -->
+  <main class="app-main">
+    <div class="manual-wrapper">
+
+      <!-- Breadcrumb Navigation -->
+      <nav class="manual-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html"><i class="bi bi-grid-fill me-1"></i>All Tools</a>
+        <span>/</span>
+        <span>Online Platforms</span>
+        <span>/</span>
+        <strong class="text-main">React Bits</strong>
+      </nav>
+
+      <!-- README Manual Card -->
+      <article class="manual-readme-card">
+
+        <!-- Hero Header -->
+        <header class="manual-hero">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+            <span class="manual-readme-badge">
+              <i class="bi bi-book-half"></i> README.md &bull; User Manual
+            </span>
+            <span class="tool-category-badge cat-online-platforms">
+              Online Platforms
+            </span>
+          </div>
+
+          <h1 class="manual-title">React Bits</h1>
+          <p class="manual-lead">Curated collection of lightweight, copy-paste animated React components, text effects, and interactive UI elements.</p>
+
+          <div class="manual-meta-bar">
+            <div class="tool-card-tags">
+              <span class="card-tag">#platform</span>
+                <span class="card-tag">#react</span>
+                <span class="card-tag">#animations</span>
+                <span class="card-tag">#ui-components</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <a href="https://reactbits.dev" target="_blank" rel="noopener noreferrer" class="btn-open-doc" title="Open official documentation">
+                Official Docs <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Manual Body Sections -->
+        <div class="manual-body">
+
+          <!-- Section 1: What It Is -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-info-circle-fill"></i> What It Is
+            </h2>
+            <p class="manual-text">React Bits is a curated collection of lightweight, copy-paste animated React components, kinetic typography effects, interactive cards, and background shaders.</p>
+            <p class="manual-text">It helps frontend developers add memorable visual delight—such as split-text reveals, spotlight cards, and magnetic buttons—without wrestling with complex animation math from scratch.</p>
+          </section>
+
+          <!-- Section 2: How It Helps With Your Projects -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-rocket-takeoff-fill"></i> How It Helps With Your Projects
+            </h2>
+            <ul class="manual-list">
+              <li><strong>High-Impact Hero &amp; Landing Polish:</strong> Elevate portfolio headers and product landing pages with smooth, 60fps text and cursor animations.</li>
+              <li><strong>Copy-Paste Customization:</strong> Components are self-contained and easy to drop into your codebase so you can tweak timing, easing, and colors freely.</li>
+              <li><strong>Lightweight &amp; Modular:</strong> Import only the specific interactive effect you need without pulling in a monolithic UI library.</li>
+            </ul>
+            <div class="manual-callout">
+              <strong><i class="bi bi-lightbulb-fill me-1"></i> When to Reach for React Bits:</strong>
+              Use React Bits when building portfolios, landing pages, or interactive showcases that benefit from tasteful motion and micro-interactions.
+            </div>
+          </section>
+
+          <!-- Section 3: How to Use It -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-terminal-fill"></i> How to Use It
+            </h2>
+            <p class="manual-text">Browse for animated hero titles, magnetic buttons, interactive card hover effects, and background shaders to make client-side React apps feel responsive, dynamic, and visually stunning.</p>
+            <ol class="manual-list">
+              <li>Browse reactbits.dev to preview text animations, card hover effects, or subtle background patterns.</li>
+              <li>Copy the component source (Tailwind or CSS variant) into your components/ui/ directory.</li>
+              <li>Use motion sparingly—pair 1 or 2 focal animations (like a hero heading or spotlight card) with calm, readable content areas.</li>
+            </ol>
+            <pre class="manual-code-block"><code>// Example: Using a React Bits animated heading in a hero section
+import SplitText from &#039;./components/ui/SplitText&#039;;
+
+export function HeroBanner() {
+  return (
+    &lt;SplitText
+      text=&quot;Crafted with Taste &amp; Architectural Polish&quot;
+      className=&quot;text-3xl font-bold tracking-tight&quot;
+      delay={40}
+    /&gt;
+  );
+}</code></pre>
+          </section>
+
+        </div>
+
+        <!-- Footer Navigation inside Card -->
+        <footer class="manual-footer-nav">
+          <a href="../index.html" class="btn-back-directory">
+            <i class="bi bi-arrow-left"></i> Back to All Tools
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <a href="graphify.html" class="btn-secondary-custom" title="Previous Tool: Graphify">
+              <i class="bi bi-chevron-left"></i> Graphify
+            </a>
+            <a href="figma.html" class="btn-secondary-custom" title="Next Tool: Figma">
+              Figma <i class="bi bi-chevron-right"></i>
+            </a>
+            <a href="https://reactbits.dev" target="_blank" rel="noopener noreferrer" class="btn-open-doc">
+              Official Reference <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </footer>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Theme Rotator Script -->
+  <script>
+    (function () {
+      const PALETTES = [
+        { id: 'warm-linen', name: 'Warm Linen' },
+        { id: 'midnight-obsidian', name: 'Midnight Obsidian' },
+        { id: 'nordic-sage', name: 'Nordic Sage' },
+        { id: 'pitch-black', name: 'Pitch Obsidian' },
+        { id: 'crisp-alabaster', name: 'Crisp Alabaster' }
+      ];
+      let currentIdx = 0;
+      const saved = localStorage.getItem('ec_tools_palette');
+      const found = PALETTES.findIndex(p => p.id === saved);
+      if (found !== -1) currentIdx = found;
+
+      function updateLabel() {
+        const label = document.getElementById('currentPaletteLabel');
+        if (label) label.textContent = PALETTES[currentIdx].name;
+      }
+      updateLabel();
+
+      const btn = document.getElementById('rotatePaletteBtn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          currentIdx = (currentIdx + 1) % PALETTES.length;
+          const next = PALETTES[currentIdx];
+          document.documentElement.setAttribute('data-palette', next.id);
+          localStorage.setItem('ec_tools_palette', next.id);
+          updateLabel();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

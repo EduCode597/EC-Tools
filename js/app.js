@@ -49,6 +49,14 @@
   }
 
   /**
+   * Resolve dedicated manual page path for a tool
+   */
+  function getManualUrl(tool) {
+    if (!tool) return '';
+    return tool.manualUrl || `manuals/${tool.id}.html`;
+  }
+
+  /**
    * Load data from window.DEFAULT_TOOLS or fallback to fetch data/tools.json
    */
   async function loadData() {
@@ -218,6 +226,7 @@
     toolsContainer.innerHTML = filtered
       .map((tool) => {
         const catClass = getCategoryClass(tool.category);
+        const manualUrl = getManualUrl(tool);
         const tagsHtml = (tool.tags || [])
           .map(
             (t) =>
@@ -227,7 +236,7 @@
 
         return `
           <div class="col-12 col-md-6 col-xl-4">
-            <div class="tool-card" id="card-${escapeHtml(tool.id)}">
+            <div class="tool-card" id="card-${escapeHtml(tool.id)}" data-manual-url="${escapeHtml(manualUrl)}" role="link" tabindex="0" aria-label="Open ${escapeHtml(tool.name)} user manual">
               <div class="tool-card-header">
                 <div>
                   <h3 class="tool-name">
@@ -389,6 +398,32 @@
           }
           return;
         }
+
+        // Ignore direct clicks on external doc links or other buttons
+        if (e.target.closest('.btn-open-doc, a, button')) {
+          return;
+        }
+
+        // Navigate to dedicated tool manual page when clicking the card
+        const card = e.target.closest('.tool-card[data-manual-url]');
+        if (card) {
+          const manualUrl = card.getAttribute('data-manual-url');
+          if (manualUrl) {
+            window.location.href = manualUrl;
+          }
+        }
+      });
+
+      toolsContainer.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest('.tool-card[data-manual-url]');
+        if (card && e.target === card) {
+          e.preventDefault();
+          const manualUrl = card.getAttribute('data-manual-url');
+          if (manualUrl) {
+            window.location.href = manualUrl;
+          }
+        }
       });
     }
 
@@ -536,6 +571,7 @@
       getFilteredTools,
       escapeHtml,
       getCategoryClass,
+      getManualUrl,
     };
   }
 })();

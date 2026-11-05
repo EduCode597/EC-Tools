@@ -117,4 +117,10 @@ describe('EC-Tools Core Business Logic', () => {
     assert.equal(parsed.length, defaultTools.length);
     assert.equal(parsed[0].name, defaultTools[0].name);
   });
+
+  test('Every tool resolves a valid dedicated manualUrl in manuals/ folder', () => {
+    defaultTools.forEach((tool) => {
+      assert.equal(tool.manualUrl, `manuals/${tool.id}.html`);
+    });
+  });
 });
