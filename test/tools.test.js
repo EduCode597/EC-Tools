@@ -71,6 +71,27 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       assert.ok(tool.description, `Tool ${tool.name} must have a description`);
       assert.ok(tool.howToUse, `Tool ${tool.name} must have a howToUse guide`);
       assert.ok(Array.isArray(tool.tags) && tool.tags.length > 0, `Tool ${tool.name} must have tags`);
+      assert.equal(tool.manualUrl, `manuals/${tool.id}.html`, `Tool ${tool.name} must have manualUrl pointing to manuals/${tool.id}.html`);
+    });
+  });
+
+  test('Every tool has a dedicated README-style manual HTML file in manuals/ directory', () => {
+    const tools = JSON.parse(fs.readFileSync(toolsJsonPath, 'utf8'));
+    const manualsDir = path.join(__dirname, '..', 'manuals');
+    assert.ok(fs.existsSync(manualsDir), 'manuals/ directory must exist');
+
+    tools.forEach(tool => {
+      const manualFilePath = path.join(__dirname, '..', tool.manualUrl);
+      assert.ok(fs.existsSync(manualFilePath), `Manual page ${tool.manualUrl} must exist for ${tool.name}`);
+      const html = fs.readFileSync(manualFilePath, 'utf8');
+
+      assert.ok(html.includes(tool.name), `Manual page for ${tool.name} must contain the tool name`);
+      assert.ok(html.includes('href="../index.html"'), `Manual page for ${tool.name} must have a Back link to ../index.html`);
+      assert.ok(html.includes('../css/styles.css'), `Manual page for ${tool.name} must load ../css/styles.css`);
+      assert.ok(html.includes('ec_tools_palette'), `Manual page for ${tool.name} must support the 5-color palette theme persistence`);
+      assert.ok(html.includes('What It Is'), `Manual page for ${tool.name} must include "What It Is" introduction section`);
+      assert.ok(html.includes('How It Helps With Your Projects'), `Manual page for ${tool.name} must include "How It Helps With Your Projects" section`);
+      assert.ok(html.includes('How to Use It'), `Manual page for ${tool.name} must include "How to Use It" section`);
     });
   });
 
@@ -144,7 +165,11 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       '.tag-pill',
       '.custom-toast',
       '.cat-deployment-tools',
-      '.cat-open-source-tools'
+      '.cat-open-source-tools',
+      '.manual-wrapper',
+      '.manual-readme-card',
+      '.manual-section',
+      '.btn-back-directory'
     ];
 
     requiredClasses.forEach(cls => {
@@ -161,6 +186,8 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
     assert.ok(appJs.includes('renderTools'), 'Should have render tools logic');
     assert.ok(appJs.includes('updateCategoryCounters'), 'Should have category counting logic');
     assert.ok(appJs.includes('renderTags'), 'Should have tag rendering logic');
+    assert.ok(appJs.includes('data-manual-url'), 'Should attach data-manual-url to tool cards for navigation');
+    assert.ok(appJs.includes('getManualUrl'), 'Should define getManualUrl helper for tool cards');
 
     // Mutation functions removed
     assert.ok(!appJs.includes('saveToolFromForm'), 'saveToolFromForm should be removed');

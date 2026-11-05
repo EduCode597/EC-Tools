@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="warm-linen">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vercel — User Manual | Madriaga EC-Tools</title>
+  <meta name="description" content="README user manual and practical project guide for Vercel (Deployment Tools) in EC-Tools by John Eduard Madriaga.">
+  <link rel="icon" type="image/svg+xml" href="../public/Madriaga_logo.svg">
+
+  <!-- Anti-FOUT Theme Initializer -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const allowed = ['warm-linen', 'midnight-obsidian', 'nordic-sage', 'pitch-black', 'crisp-alabaster'];
+        if (saved && allowed.includes(saved)) {
+          document.documentElement.setAttribute('data-palette', saved);
+        } else {
+          document.documentElement.setAttribute('data-palette', 'warm-linen');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS & Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header d-flex align-items-center px-3 px-lg-4 justify-content-between">
+    <div class="d-flex align-items-center gap-3">
+      <a href="../index.html" class="brand-link d-flex align-items-center gap-2 text-decoration-none">
+        <div class="brand-logo-frame">
+          <img src="../public/Madriaga_logo.svg" alt="Madriaga Brand Logo" class="brand-logo-img" width="34" height="34">
+        </div>
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center gap-2">
+            <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
+            <span class="brand-badge">EC-Tools</span>
+          </div>
+          <span class="brand-subtext d-none d-sm-inline">Tool Manual &bull; README Guide</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <a href="../index.html" class="btn-back-directory" title="Return to All Tools Directory">
+        <i class="bi bi-arrow-left"></i>
+        <span>Back to All Tools</span>
+      </a>
+
+      <!-- Interactive 5-Hex Palette Rotator -->
+      <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
+        <i class="bi bi-palette2"></i>
+        <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
+        <span class="palette-swatch-preview" aria-hidden="true">
+          <span class="swatch-dot" style="background-color: #ffffff;"></span>
+          <span class="swatch-dot" style="background-color: #fff4e9;"></span>
+          <span class="swatch-dot" style="background-color: #828e82;"></span>
+          <span class="swatch-dot" style="background-color: #131b23;"></span>
+          <span class="swatch-dot" style="background-color: #000000;"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Manual Content -->
+  <main class="app-main">
+    <div class="manual-wrapper">
+
+      <!-- Breadcrumb Navigation -->
+      <nav class="manual-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html"><i class="bi bi-grid-fill me-1"></i>All Tools</a>
+        <span>/</span>
+        <span>Deployment Tools</span>
+        <span>/</span>
+        <strong class="text-main">Vercel</strong>
+      </nav>
+
+      <!-- README Manual Card -->
+      <article class="manual-readme-card">
+
+        <!-- Hero Header -->
+        <header class="manual-hero">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+            <span class="manual-readme-badge">
+              <i class="bi bi-book-half"></i> README.md &bull; User Manual
+            </span>
+            <span class="tool-category-badge cat-deployment-tools">
+              Deployment Tools
+            </span>
+          </div>
+
+          <h1 class="manual-title">Vercel</h1>
+          <p class="manual-lead">Frontend cloud platform optimized for React, Next.js, and static web apps with instant edge network deployment and preview URLs.</p>
+
+          <div class="manual-meta-bar">
+            <div class="tool-card-tags">
+              <span class="card-tag">#deployment</span>
+                <span class="card-tag">#frontend</span>
+                <span class="card-tag">#serverless</span>
+                <span class="card-tag">#hosting</span>
+                <span class="card-tag">#edge</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer" class="btn-open-doc" title="Open official documentation">
+                Official Docs <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Manual Body Sections -->
+        <div class="manual-body">
+
+          <!-- Section 1: What It Is -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-info-circle-fill"></i> What It Is
+            </h2>
+            <p class="manual-text">Vercel is a frontend cloud platform engineered for React, Vite, Next.js, and static web applications, delivering instant global edge caching, serverless API functions, and automatic Pull Request preview URLs.</p>
+            <p class="manual-text">When you push a branch to GitHub, Vercel builds your project in seconds and generates a unique shareable preview link so you can test and showcase changes live before merging.</p>
+          </section>
+
+          <!-- Section 2: How It Helps With Your Projects -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-rocket-takeoff-fill"></i> How It Helps With Your Projects
+            </h2>
+            <ul class="manual-list">
+              <li><strong>Instant PR Preview Deployments:</strong> Every branch and Pull Request gets its own live HTTPS URL for instant visual QA and mobile device testing.</li>
+              <li><strong>Global Edge Network Performance:</strong> Serves static assets, images, and frontend bundles from edge locations closest to your visitors with automatic SSL.</li>
+              <li><strong>One-Click Rollbacks:</strong> If a production release ever introduces a visual bug, revert to any previous deployment in a single click.</li>
+            </ul>
+            <div class="manual-callout">
+              <strong><i class="bi bi-lightbulb-fill me-1"></i> When to Reach for Vercel:</strong>
+              Ideal for deploying React, Vite, Next.js, and Tailwind frontend applications as well as lightweight serverless API routes.
+            </div>
+          </section>
+
+          <!-- Section 3: How to Use It -->
+          <section class="manual-section">
+            <h2 class="manual-section-title">
+              <i class="bi bi-terminal-fill"></i> How to Use It
+            </h2>
+            <p class="manual-text">Ideal for deploying React/Vite frontends, serverless API routes, and static sites. Link your GitHub repo to get automatic PR preview deployments, instant rollbacks, and custom domain SSL out of the box.</p>
+            <ol class="manual-list">
+              <li>Import your GitHub repository into Vercel—it automatically detects Vite, Next.js, Create React App, or static HTML setups.</li>
+              <li>Configure any required VITE_* or NEXT_PUBLIC_* environment variables in Project Settings.</li>
+              <li>Push commits to a branch to get an instant preview URL, and merge to main to promote to production.</li>
+            </ol>
+            <pre class="manual-code-block"><code>// vercel.json for clean URLs &amp; custom headers (optional)
+{
+  &quot;cleanUrls&quot;: true,
+  &quot;trailingSlash&quot;: false
+}</code></pre>
+          </section>
+
+        </div>
+
+        <!-- Footer Navigation inside Card -->
+        <footer class="manual-footer-nav">
+          <a href="../index.html" class="btn-back-directory">
+            <i class="bi bi-arrow-left"></i> Back to All Tools
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <a href="render.html" class="btn-secondary-custom" title="Previous Tool: Render">
+              <i class="bi bi-chevron-left"></i> Render
+            </a>
+            <a href="redis.html" class="btn-secondary-custom" title="Next Tool: Redis">
+              Redis <i class="bi bi-chevron-right"></i>
+            </a>
+            <a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer" class="btn-open-doc">
+              Official Reference <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </footer>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Theme Rotator Script -->
+  <script>
+    (function () {
+      const PALETTES = [
+        { id: 'warm-linen', name: 'Warm Linen' },
+        { id: 'midnight-obsidian', name: 'Midnight Obsidian' },
+        { id: 'nordic-sage', name: 'Nordic Sage' },
+        { id: 'pitch-black', name: 'Pitch Obsidian' },
+        { id: 'crisp-alabaster', name: 'Crisp Alabaster' }
+      ];
+      let currentIdx = 0;
+      const saved = localStorage.getItem('ec_tools_palette');
+      const found = PALETTES.findIndex(p => p.id === saved);
+      if (found !== -1) currentIdx = found;
+
+      function updateLabel() {
+        const label = document.getElementById('currentPaletteLabel');
+        if (label) label.textContent = PALETTES[currentIdx].name;
+      }
+      updateLabel();
+
+      const btn = document.getElementById('rotatePaletteBtn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          currentIdx = (currentIdx + 1) % PALETTES.length;
+          const next = PALETTES[currentIdx];
+          document.documentElement.setAttribute('data-palette', next.id);
+          localStorage.setItem('ec_tools_palette', next.id);
+          updateLabel();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

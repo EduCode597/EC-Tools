@@ -659,6 +659,12 @@ a:hover {
   height: 100%;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.tool-card:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
 .tool-card:hover {
@@ -1249,4 +1255,211 @@ a:hover {
 .mobile-palette-box {
   background-color: var(--bg-surface);
   border-color: var(--border-color) !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. Dedicated Tool Manual Pages (README-Style Layout)
+   -------------------------------------------------------------------------- */
+
+.btn-back-directory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.42rem 0.9rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-back-directory:hover {
+  border-color: var(--clr-sage);
+  background-color: var(--primary-subtle);
+  color: var(--text-main);
+  transform: translateX(-2px);
+}
+
+.manual-wrapper {
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.25rem 1.5rem 4rem;
+  flex-grow: 1;
+}
+
+.manual-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.manual-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.manual-breadcrumb a:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.manual-readme-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.manual-hero {
+  padding: 2rem 2.25rem 1.65rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+.manual-readme-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.manual-title {
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  margin: 0.5rem 0 0.65rem;
+}
+
+.manual-lead {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 1.15rem;
+}
+
+.manual-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.manual-body {
+  padding: 2rem 2.25rem;
+}
+
+.manual-section {
+  margin-bottom: 2.15rem;
+  padding-bottom: 1.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.manual-section:last-of-type {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.manual-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.manual-section-title i {
+  color: var(--accent-sage);
+  font-size: 1.05rem;
+}
+
+.manual-text {
+  font-size: 0.94rem;
+  line-height: 1.72;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.manual-callout {
+  background-color: var(--bg-callout);
+  border: 1px solid var(--bg-callout-border);
+  border-left: 3.5px solid var(--accent-sage);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.35rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.manual-list {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+.manual-list li {
+  margin-bottom: 0.55rem;
+}
+
+.manual-list li strong {
+  color: var(--text-main);
+}
+
+.manual-code-block {
+  background-color: var(--bg-callout);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  overflow-x: auto;
+  margin: 0.85rem 0 0;
+}
+
+.manual-footer-nav {
+  padding: 1.25rem 2.25rem;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .manual-wrapper {
+    padding: 1.25rem 1rem 2.5rem;
+  }
+  .manual-hero,
+  .manual-body,
+  .manual-footer-nav {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
