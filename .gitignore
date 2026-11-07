@@ -1,5 +1,6 @@
 # Local specs and plans
 docs/
+.superpowers/
 
 # Dependencies & OS files
 node_modules/
