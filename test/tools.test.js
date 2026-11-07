@@ -95,6 +95,42 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
     });
   });
 
+  test('Every manual page implements the Wide Asymmetric Bento Showcase with Taste & accessibility standards', () => {
+    const tools = JSON.parse(fs.readFileSync(toolsJsonPath, 'utf8'));
+
+    tools.forEach(tool => {
+      const manualFilePath = path.join(__dirname, '..', tool.manualUrl);
+      const html = fs.readFileSync(manualFilePath, 'utf8');
+
+      // Accessibility landmarks & skip navigation
+      assert.ok(html.includes('class="skip-to-content"'), `${tool.manualUrl} must include a skip-to-content keyboard link`);
+      assert.ok(html.includes('id="manualMainContent"'), `${tool.manualUrl} must include #manualMainContent landmark target`);
+      assert.ok(html.includes('class="manual-jump-nav"'), `${tool.manualUrl} must include on-page section jump navigation`);
+      assert.ok(html.includes('aria-labelledby="heading-what-it-is"'), `${tool.manualUrl} What It Is section must have aria-labelledby`);
+      assert.ok(html.includes('aria-labelledby="heading-how-it-helps"'), `${tool.manualUrl} How It Helps section must have aria-labelledby`);
+      assert.ok(html.includes('aria-labelledby="heading-how-to-use"'), `${tool.manualUrl} How to Use It section must have aria-labelledby`);
+
+      // Option B Bento Grid & structured UI components
+      assert.ok(html.includes('manual-bento-grid'), `${tool.manualUrl} must use .manual-bento-grid container`);
+      assert.ok(html.includes('bento-hero-primary'), `${tool.manualUrl} must include primary split hero cell`);
+      assert.ok(html.includes('bento-hero-spotlight'), `${tool.manualUrl} must include spotlight split hero cell`);
+      assert.ok(html.includes('manual-benefit-grid'), `${tool.manualUrl} must render structured .manual-benefit-grid instead of plain bullets`);
+      const benefitCards = html.match(/class="manual-benefit-card"/g) || [];
+      assert.equal(benefitCards.length, 3, `${tool.manualUrl} must render 3 structured .manual-benefit-card items`);
+      assert.ok(html.includes('manual-step-list'), `${tool.manualUrl} must render structured .manual-step-list`);
+      const stepItems = html.match(/class="manual-step-item"/g) || [];
+      assert.equal(stepItems.length, 3, `${tool.manualUrl} must render 3 .manual-step-item workflow items`);
+      assert.ok(html.includes('bento-terminal'), `${tool.manualUrl} must include .bento-terminal code panel`);
+      assert.ok(html.includes('btn-copy-code'), `${tool.manualUrl} must include interactive .btn-copy-code button`);
+      assert.ok(html.includes('manual-pagination-grid'), `${tool.manualUrl} must include .manual-pagination-grid for Prev/Next cards`);
+
+      // Taste Skill strict anti-slop rules: zero em-dashes / en-dashes & no duplicate external CTA label
+      assert.ok(!html.includes('—') && !html.includes('&mdash;'), `${tool.manualUrl} must contain zero em-dashes`);
+      assert.ok(!html.includes('–') && !html.includes('&ndash;'), `${tool.manualUrl} must contain zero en-dashes`);
+      assert.ok(!html.includes('Official Reference'), `${tool.manualUrl} must avoid duplicate external CTA intent ("Official Reference")`);
+    });
+  });
+
   test('All categories specified in design are present', () => {
     const tools = JSON.parse(fs.readFileSync(toolsJsonPath, 'utf8'));
     const categories = new Set(tools.map(t => t.category));
@@ -169,12 +205,26 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       '.manual-wrapper',
       '.manual-readme-card',
       '.manual-section',
-      '.btn-back-directory'
+      '.btn-back-directory',
+      '.skip-to-content',
+      '.manual-bento-grid',
+      '.bento-hero-primary',
+      '.bento-hero-spotlight',
+      '.manual-benefit-grid',
+      '.manual-benefit-card',
+      '.manual-step-list',
+      '.bento-terminal',
+      '.btn-copy-code',
+      '.manual-pagination-grid',
+      '.manual-nav-card'
     ];
 
     requiredClasses.forEach(cls => {
       assert.ok(css.includes(cls), `styles.css must define class ${cls}`);
     });
+
+    assert.ok(css.includes('prefers-reduced-motion: reduce'), 'styles.css must honor prefers-reduced-motion for accessibility');
+    assert.ok(css.includes('repeat(12, minmax(0, 1fr))'), 'styles.css must define a 12-column CSS Grid for the manual bento layout');
   });
 
   test('app.js is secure and read-only without form mutations', () => {

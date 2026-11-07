@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vercel — User Manual | Madriaga EC-Tools</title>
-  <meta name="description" content="README user manual and practical project guide for Vercel (Deployment Tools) in EC-Tools by John Eduard Madriaga.">
+  <title>Vercel - User Manual | Madriaga EC-Tools</title>
+  <meta name="description" content="Practical developer manual and architecture reference for Vercel (Deployment Tools) in EC-Tools by John Eduard Madriaga.">
   <link rel="icon" type="image/svg+xml" href="../public/Madriaga_logo.svg">
 
   <!-- Anti-FOUT Theme Initializer -->
@@ -34,7 +34,10 @@
   <!-- Custom Design System -->
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
+<body id="pageTop">
+
+  <!-- Keyboard Skip Link -->
+  <a href="#manualMainContent" class="skip-to-content">Skip to manual content</a>
 
   <!-- Top Navigation Header -->
   <header class="app-header d-flex align-items-center px-3 px-lg-4 justify-content-between">
@@ -48,20 +51,21 @@
             <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
             <span class="brand-badge">EC-Tools</span>
           </div>
-          <span class="brand-subtext d-none d-sm-inline">Tool Manual &bull; README Guide</span>
+          <span class="brand-subtext d-none d-sm-inline">Developer Manual</span>
         </div>
       </a>
     </div>
 
     <div class="d-flex align-items-center gap-2">
       <a href="../index.html" class="btn-back-directory" title="Return to All Tools Directory">
-        <i class="bi bi-arrow-left"></i>
-        <span>Back to All Tools</span>
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        <span class="back-label-full">Back to All Tools</span>
+        <span class="back-label-short">All Tools</span>
       </a>
 
       <!-- Interactive 5-Hex Palette Rotator -->
       <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
-        <i class="bi bi-palette2"></i>
+        <i class="bi bi-palette2" aria-hidden="true"></i>
         <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
         <span class="palette-swatch-preview" aria-hidden="true">
           <span class="swatch-dot" style="background-color: #ffffff;"></span>
@@ -75,123 +79,201 @@
   </header>
 
   <!-- Main Manual Content -->
-  <main class="app-main">
+  <main id="manualMainContent" class="app-main" tabindex="-1">
     <div class="manual-wrapper">
 
-      <!-- Breadcrumb Navigation -->
-      <nav class="manual-breadcrumb" aria-label="Breadcrumb">
-        <a href="../index.html"><i class="bi bi-grid-fill me-1"></i>All Tools</a>
-        <span>/</span>
-        <span>Deployment Tools</span>
-        <span>/</span>
-        <strong class="text-main">Vercel</strong>
-      </nav>
+      <!-- Top Utility Bar: Breadcrumb + On-Page Jump Links -->
+      <div class="manual-top-bar">
+        <nav class="manual-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html"><i class="bi bi-grid-fill" aria-hidden="true"></i>All Tools</a>
+          <span aria-hidden="true">/</span>
+          <span>Deployment Tools</span>
+          <span aria-hidden="true">/</span>
+          <strong class="text-main" aria-current="page">Vercel</strong>
+        </nav>
 
-      <!-- README Manual Card -->
-      <article class="manual-readme-card">
+        <nav class="manual-jump-nav" aria-label="Manual sections">
+          <a href="#what-it-is" class="manual-jump-link">What It Is</a>
+          <a href="#how-it-helps" class="manual-jump-link">Project Value</a>
+          <a href="#how-to-use" class="manual-jump-link">Quick Start</a>
+        </nav>
+      </div>
 
-        <!-- Hero Header -->
-        <header class="manual-hero">
-          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-            <span class="manual-readme-badge">
-              <i class="bi bi-book-half"></i> README.md &bull; User Manual
-            </span>
+      <!-- Wide Asymmetric 12-Column Bento Showcase -->
+      <article class="manual-readme-card manual-bento-grid">
+
+        <!-- Row 1 Left (7 cols): Primary Split Hero -->
+        <header class="bento-card bento-hero-primary">
+          <div>
             <span class="tool-category-badge cat-deployment-tools">
-              Deployment Tools
+              <i class="bi bi-cloud-upload me-1" aria-hidden="true"></i>Deployment Tools
             </span>
+            <h1 class="manual-title">Vercel</h1>
+            <p class="manual-lead">Frontend cloud platform optimized for React, Next.js, and static web apps with instant edge network deployment and preview URLs.</p>
           </div>
 
-          <h1 class="manual-title">Vercel</h1>
-          <p class="manual-lead">Frontend cloud platform optimized for React, Next.js, and static web apps with instant edge network deployment and preview URLs.</p>
-
-          <div class="manual-meta-bar">
-            <div class="tool-card-tags">
+          <div class="manual-hero-actions">
+            <a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer" class="btn-manual-primary">
+              <span>Official Docs</span>
+              <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <div class="tool-card-tags" aria-label="Related tags">
               <span class="card-tag">#deployment</span>
-                <span class="card-tag">#frontend</span>
-                <span class="card-tag">#serverless</span>
-                <span class="card-tag">#hosting</span>
-                <span class="card-tag">#edge</span>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer" class="btn-open-doc" title="Open official documentation">
-                Official Docs <i class="bi bi-box-arrow-up-right"></i>
-              </a>
+              <span class="card-tag">#frontend</span>
+              <span class="card-tag">#serverless</span>
+              <span class="card-tag">#hosting</span>
+              <span class="card-tag">#edge</span>
             </div>
           </div>
         </header>
 
-        <!-- Manual Body Sections -->
-        <div class="manual-body">
+        <!-- Row 1 Right (5 cols): Quick Spec & Architectural Callout Spotlight -->
+        <aside class="bento-card bento-hero-spotlight" aria-label="Quick specifications and architectural guidance">
+          <div class="spotlight-header">
+            <h2 class="spotlight-heading">Quick Specifications</h2>
+            <span class="spotlight-icon-badge" aria-hidden="true">
+              <i class="bi bi-cloud-upload"></i>
+            </span>
+          </div>
 
-          <!-- Section 1: What It Is -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-info-circle-fill"></i> What It Is
+          <div class="spotlight-spec-grid">
+            <div class="spotlight-spec-cell">
+              <span class="spotlight-spec-label">Category</span>
+              <span class="spotlight-spec-value">Deployment Tools</span>
+            </div>
+            <div class="spotlight-spec-cell">
+              <span class="spotlight-spec-label">Reference Source</span>
+              <span class="spotlight-spec-value">vercel.com</span>
+            </div>
+          </div>
+
+          <div class="manual-callout">
+            <strong><i class="bi bi-compass-fill me-1" aria-hidden="true"></i>When to Reach for Vercel:</strong>
+            Ideal for deploying React, Vite, Next.js, and Tailwind frontend applications as well as lightweight serverless API routes.
+          </div>
+        </aside>
+
+        <!-- Row 2 Left (5 cols): What It Is -->
+        <section id="what-it-is" class="manual-section bento-card bento-overview" aria-labelledby="heading-what-it-is">
+          <div>
+            <h2 id="heading-what-it-is" class="manual-section-title">
+              <i class="bi bi-journal-text" aria-hidden="true"></i> What It Is
             </h2>
             <p class="manual-text">Vercel is a frontend cloud platform engineered for React, Vite, Next.js, and static web applications, delivering instant global edge caching, serverless API functions, and automatic Pull Request preview URLs.</p>
             <p class="manual-text">When you push a branch to GitHub, Vercel builds your project in seconds and generates a unique shareable preview link so you can test and showcase changes live before merging.</p>
-          </section>
+          </div>
+          <div class="overview-tag-footer">
+            <span class="small text-muted fw-medium">Core scope:</span>
+            <span class="card-tag">Deployment Tools</span>
+            <span class="card-tag">#deployment</span>
+          </div>
+        </section>
 
-          <!-- Section 2: How It Helps With Your Projects -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-rocket-takeoff-fill"></i> How It Helps With Your Projects
-            </h2>
-            <ul class="manual-list">
-              <li><strong>Instant PR Preview Deployments:</strong> Every branch and Pull Request gets its own live HTTPS URL for instant visual QA and mobile device testing.</li>
-              <li><strong>Global Edge Network Performance:</strong> Serves static assets, images, and frontend bundles from edge locations closest to your visitors with automatic SSL.</li>
-              <li><strong>One-Click Rollbacks:</strong> If a production release ever introduces a visual bug, revert to any previous deployment in a single click.</li>
-            </ul>
-            <div class="manual-callout">
-              <strong><i class="bi bi-lightbulb-fill me-1"></i> When to Reach for Vercel:</strong>
-              Ideal for deploying React, Vite, Next.js, and Tailwind frontend applications as well as lightweight serverless API routes.
+        <!-- Row 2 Right (7 cols): How It Helps With Your Projects (2+1 Bento Sub-Grid) -->
+        <section id="how-it-helps" class="manual-section bento-card bento-benefits" aria-labelledby="heading-how-it-helps">
+          <h2 id="heading-how-it-helps" class="manual-section-title">
+            <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i> How It Helps With Your Projects
+          </h2>
+          <ul class="manual-benefit-grid" role="list">
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-layers-fill"></i></span>
+                <h3 class="benefit-card-title">Instant PR Preview Deployments</h3>
+              </div>
+              <p class="benefit-card-desc">Every branch and Pull Request gets its own live HTTPS URL for instant visual QA and mobile device testing.</p>
+            </li>
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+                <h3 class="benefit-card-title">Global Edge Network Performance</h3>
+              </div>
+              <p class="benefit-card-desc">Serves static assets, images, and frontend bundles from edge locations closest to your visitors with automatic SSL.</p>
+            </li>
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-diagram-3-fill"></i></span>
+                <h3 class="benefit-card-title">One-Click Rollbacks</h3>
+              </div>
+              <p class="benefit-card-desc">If a production release ever introduces a visual bug, revert to any previous deployment in a single click.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Row 3 Left (5 cols): How to Use It (Actionable Step List) -->
+        <section id="how-to-use" class="manual-section bento-card bento-workflow" aria-labelledby="heading-how-to-use">
+          <h2 id="heading-how-to-use" class="manual-section-title">
+            <i class="bi bi-sliders2" aria-hidden="true"></i> How to Use It
+          </h2>
+          <p class="manual-text">Ideal for deploying React/Vite frontends, serverless API routes, and static sites. Link your GitHub repo to get automatic PR preview deployments, instant rollbacks, and custom domain SSL out of the box.</p>
+          <ol class="manual-step-list">
+            <li class="manual-step-item"><span>Import your GitHub repository into Vercel, and it automatically detects Vite, Next.js, Create React App, or static HTML setups.</span></li>
+            <li class="manual-step-item"><span>Configure any required VITE_* or NEXT_PUBLIC_* environment variables in Project Settings.</span></li>
+            <li class="manual-step-item"><span>Push commits to a branch to get an instant preview URL, and merge to main to promote to production.</span></li>
+          </ol>
+        </section>
+
+        <!-- Row 3 Right (7 cols): Interactive Obsidian Code Terminal -->
+        <aside class="bento-card bento-terminal" aria-label="Implementation snippet">
+          <div class="terminal-topbar">
+            <div class="terminal-title-group">
+              <span class="terminal-window-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="terminal-filename">vercel.json</span>
             </div>
-          </section>
-
-          <!-- Section 3: How to Use It -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-terminal-fill"></i> How to Use It
-            </h2>
-            <p class="manual-text">Ideal for deploying React/Vite frontends, serverless API routes, and static sites. Link your GitHub repo to get automatic PR preview deployments, instant rollbacks, and custom domain SSL out of the box.</p>
-            <ol class="manual-list">
-              <li>Import your GitHub repository into Vercel—it automatically detects Vite, Next.js, Create React App, or static HTML setups.</li>
-              <li>Configure any required VITE_* or NEXT_PUBLIC_* environment variables in Project Settings.</li>
-              <li>Push commits to a branch to get an instant preview URL, and merge to main to promote to production.</li>
-            </ol>
-            <pre class="manual-code-block"><code>// vercel.json for clean URLs &amp; custom headers (optional)
+            <button type="button" class="btn-copy-code" id="copyCodeBtn" aria-label="Copy code snippet to clipboard">
+              <i class="bi bi-clipboard" aria-hidden="true"></i>
+              <span id="copyCodeLabel" aria-live="polite">Copy Snippet</span>
+            </button>
+          </div>
+          <pre class="manual-code-block" tabindex="0"><code id="manualCodeSnippet">// vercel.json for clean URLs &amp; custom headers (optional)
 {
   &quot;cleanUrls&quot;: true,
   &quot;trailingSlash&quot;: false
 }</code></pre>
-          </section>
+        </aside>
 
-        </div>
-
-        <!-- Footer Navigation inside Card -->
-        <footer class="manual-footer-nav">
-          <a href="../index.html" class="btn-back-directory">
-            <i class="bi bi-arrow-left"></i> Back to All Tools
+        <!-- Row 4 Full Span (6 + 6 cols): Previous & Next Tool Cards -->
+        <nav class="manual-pagination-grid" aria-label="Tool manual pagination">
+          <a href="render.html" class="manual-nav-card prev-card" title="Previous Tool: Render">
+            <span class="nav-card-arrow" aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+            <span class="nav-card-meta">
+              <span class="nav-card-dir">Previous Manual &bull; Deployment Tools</span>
+              <span class="nav-card-title">Render</span>
+            </span>
           </a>
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            <a href="render.html" class="btn-secondary-custom" title="Previous Tool: Render">
-              <i class="bi bi-chevron-left"></i> Render
-            </a>
-            <a href="redis.html" class="btn-secondary-custom" title="Next Tool: Redis">
-              Redis <i class="bi bi-chevron-right"></i>
-            </a>
-            <a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer" class="btn-open-doc">
-              Official Reference <i class="bi bi-box-arrow-up-right"></i>
-            </a>
-          </div>
-        </footer>
+          <a href="redis.html" class="manual-nav-card next-card" title="Next Tool: Redis">
+            <span class="nav-card-meta">
+              <span class="nav-card-dir">Next Manual &bull; Open Source Tools</span>
+              <span class="nav-card-title">Redis</span>
+            </span>
+            <span class="nav-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          </a>
+        </nav>
 
       </article>
 
     </div>
+
+    <!-- Grounding Site Footer -->
+    <footer class="manual-site-footer">
+      <div class="manual-site-footer-inner">
+        <a href="../index.html" class="btn-back-directory">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          <span>Back to All Tools</span>
+        </a>
+        <p class="manual-footer-credit">
+          &copy; 2026 <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer">John Eduard Madriaga</a> (@EduCode597). Crafted with Taste.
+        </p>
+        <a href="#pageTop" class="btn-secondary-custom" aria-label="Scroll back to top">
+          <span>Back to Top</span>
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
   </main>
 
-  <!-- Theme Rotator Script -->
+  <!-- Theme Rotator & Copy Snippet Script -->
   <script>
     (function () {
       const PALETTES = [
@@ -202,25 +284,76 @@
         { id: 'crisp-alabaster', name: 'Crisp Alabaster' }
       ];
       let currentIdx = 0;
-      const saved = localStorage.getItem('ec_tools_palette');
-      const found = PALETTES.findIndex(p => p.id === saved);
-      if (found !== -1) currentIdx = found;
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const found = PALETTES.findIndex(p => p.id === saved);
+        if (found !== -1) currentIdx = found;
+      } catch (e) {}
 
+      const btn = document.getElementById('rotatePaletteBtn');
       function updateLabel() {
+        const current = PALETTES[currentIdx];
         const label = document.getElementById('currentPaletteLabel');
-        if (label) label.textContent = PALETTES[currentIdx].name;
+        if (label) label.textContent = current.name;
+        if (btn) btn.setAttribute('aria-label', 'Rotate color scheme (current: ' + current.name + ')');
       }
       updateLabel();
 
-      const btn = document.getElementById('rotatePaletteBtn');
       if (btn) {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', function () {
           currentIdx = (currentIdx + 1) % PALETTES.length;
           const next = PALETTES[currentIdx];
           document.documentElement.setAttribute('data-palette', next.id);
-          localStorage.setItem('ec_tools_palette', next.id);
+          try {
+            localStorage.setItem('ec_tools_palette', next.id);
+          } catch (e) {}
           updateLabel();
         });
+      }
+
+      const copyBtn = document.getElementById('copyCodeBtn');
+      const codeEl = document.getElementById('manualCodeSnippet');
+      const copyLabel = document.getElementById('copyCodeLabel');
+      if (copyBtn && codeEl && copyLabel) {
+        let resetTimer = null;
+        copyBtn.addEventListener('click', function () {
+          const text = codeEl.textContent || '';
+          const markCopied = function () {
+            copyBtn.classList.add('is-copied');
+            copyLabel.textContent = 'Copied';
+            const icon = copyBtn.querySelector('i');
+            if (icon) icon.className = 'bi bi-check2';
+            if (resetTimer) clearTimeout(resetTimer);
+            resetTimer = setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyLabel.textContent = 'Copy Snippet';
+              if (icon) icon.className = 'bi bi-clipboard';
+            }, 1800);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+              fallbackCopy(text, markCopied);
+            });
+          } else {
+            fallbackCopy(text, markCopied);
+          }
+        });
+      }
+
+      function fallbackCopy(text, onDone) {
+        try {
+          const area = document.createElement('textarea');
+          area.value = text;
+          area.setAttribute('readonly', '');
+          area.style.position = 'fixed';
+          area.style.opacity = '0';
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          document.body.removeChild(area);
+          onDone();
+        } catch (e) {}
       }
     })();
   </script>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MySQL — User Manual | Madriaga EC-Tools</title>
-  <meta name="description" content="README user manual and practical project guide for MySQL (Database) in EC-Tools by John Eduard Madriaga.">
+  <title>MySQL - User Manual | Madriaga EC-Tools</title>
+  <meta name="description" content="Practical developer manual and architecture reference for MySQL (Database) in EC-Tools by John Eduard Madriaga.">
   <link rel="icon" type="image/svg+xml" href="../public/Madriaga_logo.svg">
 
   <!-- Anti-FOUT Theme Initializer -->
@@ -34,7 +34,10 @@
   <!-- Custom Design System -->
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
+<body id="pageTop">
+
+  <!-- Keyboard Skip Link -->
+  <a href="#manualMainContent" class="skip-to-content">Skip to manual content</a>
 
   <!-- Top Navigation Header -->
   <header class="app-header d-flex align-items-center px-3 px-lg-4 justify-content-between">
@@ -48,20 +51,21 @@
             <span class="brand-name fw-bold" style="letter-spacing: -0.02em;">Madriaga</span>
             <span class="brand-badge">EC-Tools</span>
           </div>
-          <span class="brand-subtext d-none d-sm-inline">Tool Manual &bull; README Guide</span>
+          <span class="brand-subtext d-none d-sm-inline">Developer Manual</span>
         </div>
       </a>
     </div>
 
     <div class="d-flex align-items-center gap-2">
       <a href="../index.html" class="btn-back-directory" title="Return to All Tools Directory">
-        <i class="bi bi-arrow-left"></i>
-        <span>Back to All Tools</span>
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        <span class="back-label-full">Back to All Tools</span>
+        <span class="back-label-short">All Tools</span>
       </a>
 
       <!-- Interactive 5-Hex Palette Rotator -->
       <button type="button" id="rotatePaletteBtn" class="btn-palette-rotator" title="Rotate Color Scheme (#ffffff-#fff4e9-#828e82-#131b23-#000000)" aria-label="Rotate color scheme">
-        <i class="bi bi-palette2"></i>
+        <i class="bi bi-palette2" aria-hidden="true"></i>
         <span class="d-none d-md-inline" id="currentPaletteLabel">Warm Linen</span>
         <span class="palette-swatch-preview" aria-hidden="true">
           <span class="swatch-dot" style="background-color: #ffffff;"></span>
@@ -75,90 +79,153 @@
   </header>
 
   <!-- Main Manual Content -->
-  <main class="app-main">
+  <main id="manualMainContent" class="app-main" tabindex="-1">
     <div class="manual-wrapper">
 
-      <!-- Breadcrumb Navigation -->
-      <nav class="manual-breadcrumb" aria-label="Breadcrumb">
-        <a href="../index.html"><i class="bi bi-grid-fill me-1"></i>All Tools</a>
-        <span>/</span>
-        <span>Database</span>
-        <span>/</span>
-        <strong class="text-main">MySQL</strong>
-      </nav>
+      <!-- Top Utility Bar: Breadcrumb + On-Page Jump Links -->
+      <div class="manual-top-bar">
+        <nav class="manual-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html"><i class="bi bi-grid-fill" aria-hidden="true"></i>All Tools</a>
+          <span aria-hidden="true">/</span>
+          <span>Database</span>
+          <span aria-hidden="true">/</span>
+          <strong class="text-main" aria-current="page">MySQL</strong>
+        </nav>
 
-      <!-- README Manual Card -->
-      <article class="manual-readme-card">
+        <nav class="manual-jump-nav" aria-label="Manual sections">
+          <a href="#what-it-is" class="manual-jump-link">What It Is</a>
+          <a href="#how-it-helps" class="manual-jump-link">Project Value</a>
+          <a href="#how-to-use" class="manual-jump-link">Quick Start</a>
+        </nav>
+      </div>
 
-        <!-- Hero Header -->
-        <header class="manual-hero">
-          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-            <span class="manual-readme-badge">
-              <i class="bi bi-book-half"></i> README.md &bull; User Manual
-            </span>
+      <!-- Wide Asymmetric 12-Column Bento Showcase -->
+      <article class="manual-readme-card manual-bento-grid">
+
+        <!-- Row 1 Left (7 cols): Primary Split Hero -->
+        <header class="bento-card bento-hero-primary">
+          <div>
             <span class="tool-category-badge cat-database">
-              Database
+              <i class="bi bi-database me-1" aria-hidden="true"></i>Database
             </span>
+            <h1 class="manual-title">MySQL</h1>
+            <p class="manual-lead">World&#039;s most popular open-source relational database management system (RDBMS) for structured relational data.</p>
           </div>
 
-          <h1 class="manual-title">MySQL</h1>
-          <p class="manual-lead">World&#039;s most popular open-source relational database management system (RDBMS) for structured relational data.</p>
-
-          <div class="manual-meta-bar">
-            <div class="tool-card-tags">
+          <div class="manual-hero-actions">
+            <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer" class="btn-manual-primary">
+              <span>Official Docs</span>
+              <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <div class="tool-card-tags" aria-label="Related tags">
               <span class="card-tag">#database</span>
-                <span class="card-tag">#sql</span>
-                <span class="card-tag">#relational</span>
-                <span class="card-tag">#backend</span>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer" class="btn-open-doc" title="Open official documentation">
-                Official Docs <i class="bi bi-box-arrow-up-right"></i>
-              </a>
+              <span class="card-tag">#sql</span>
+              <span class="card-tag">#relational</span>
+              <span class="card-tag">#backend</span>
             </div>
           </div>
         </header>
 
-        <!-- Manual Body Sections -->
-        <div class="manual-body">
+        <!-- Row 1 Right (5 cols): Quick Spec & Architectural Callout Spotlight -->
+        <aside class="bento-card bento-hero-spotlight" aria-label="Quick specifications and architectural guidance">
+          <div class="spotlight-header">
+            <h2 class="spotlight-heading">Quick Specifications</h2>
+            <span class="spotlight-icon-badge" aria-hidden="true">
+              <i class="bi bi-database"></i>
+            </span>
+          </div>
 
-          <!-- Section 1: What It Is -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-info-circle-fill"></i> What It Is
+          <div class="spotlight-spec-grid">
+            <div class="spotlight-spec-cell">
+              <span class="spotlight-spec-label">Category</span>
+              <span class="spotlight-spec-value">Database</span>
+            </div>
+            <div class="spotlight-spec-cell">
+              <span class="spotlight-spec-label">Reference Source</span>
+              <span class="spotlight-spec-value">dev.mysql.com</span>
+            </div>
+          </div>
+
+          <div class="manual-callout">
+            <strong><i class="bi bi-compass-fill me-1" aria-hidden="true"></i>When to Reach for MySQL:</strong>
+            Choose MySQL whenever your application models structured entities with clear relationships (users, orders, enrollments, permissions) requiring ACID transactions.
+          </div>
+        </aside>
+
+        <!-- Row 2 Left (5 cols): What It Is -->
+        <section id="what-it-is" class="manual-section bento-card bento-overview" aria-labelledby="heading-what-it-is">
+          <div>
+            <h2 id="heading-what-it-is" class="manual-section-title">
+              <i class="bi bi-journal-text" aria-hidden="true"></i> What It Is
             </h2>
             <p class="manual-text">MySQL is one of the world’s most trusted open-source relational database management systems (RDBMS). It stores data in structured tables with strict schemas, foreign-key relationships, and full ACID transaction guarantees.</p>
             <p class="manual-text">From university capstone systems to high-traffic production web apps, MySQL ensures relational integrity and fast indexed lookups across normalized data models.</p>
-          </section>
+          </div>
+          <div class="overview-tag-footer">
+            <span class="small text-muted fw-medium">Core scope:</span>
+            <span class="card-tag">Database</span>
+            <span class="card-tag">#database</span>
+          </div>
+        </section>
 
-          <!-- Section 2: How It Helps With Your Projects -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-rocket-takeoff-fill"></i> How It Helps With Your Projects
-            </h2>
-            <ul class="manual-list">
-              <li><strong>Strict Relational Data Integrity:</strong> Enforce foreign keys, unique constraints, and transactions so financial or inventory records never become inconsistent.</li>
-              <li><strong>Predictable Query Performance:</strong> Use composite B-tree indexes and EXPLAIN plans to optimize complex multi-table JOINs and aggregations.</li>
-              <li><strong>Universal ORM &amp; Hosting Support:</strong> Works seamlessly with Prisma, Knex, Sequelize, SQLAlchemy, PHP/Laravel, and every cloud database provider.</li>
-            </ul>
-            <div class="manual-callout">
-              <strong><i class="bi bi-lightbulb-fill me-1"></i> When to Reach for MySQL:</strong>
-              Choose MySQL whenever your application models structured entities with clear relationships (users, orders, enrollments, permissions) requiring ACID transactions.
+        <!-- Row 2 Right (7 cols): How It Helps With Your Projects (2+1 Bento Sub-Grid) -->
+        <section id="how-it-helps" class="manual-section bento-card bento-benefits" aria-labelledby="heading-how-it-helps">
+          <h2 id="heading-how-it-helps" class="manual-section-title">
+            <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i> How It Helps With Your Projects
+          </h2>
+          <ul class="manual-benefit-grid" role="list">
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-layers-fill"></i></span>
+                <h3 class="benefit-card-title">Strict Relational Data Integrity</h3>
+              </div>
+              <p class="benefit-card-desc">Enforce foreign keys, unique constraints, and transactions so financial or inventory records never become inconsistent.</p>
+            </li>
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+                <h3 class="benefit-card-title">Predictable Query Performance</h3>
+              </div>
+              <p class="benefit-card-desc">Use composite B-tree indexes and EXPLAIN plans to optimize complex multi-table JOINs and aggregations.</p>
+            </li>
+            <li class="manual-benefit-card">
+              <div class="benefit-card-head">
+                <span class="benefit-card-index" aria-hidden="true"><i class="bi bi-diagram-3-fill"></i></span>
+                <h3 class="benefit-card-title">Universal ORM &amp; Hosting Support</h3>
+              </div>
+              <p class="benefit-card-desc">Works seamlessly with Prisma, Knex, Sequelize, SQLAlchemy, PHP/Laravel, and every cloud database provider.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Row 3 Left (5 cols): How to Use It (Actionable Step List) -->
+        <section id="how-to-use" class="manual-section bento-card bento-workflow" aria-labelledby="heading-how-to-use">
+          <h2 id="heading-how-to-use" class="manual-section-title">
+            <i class="bi bi-sliders2" aria-hidden="true"></i> How to Use It
+          </h2>
+          <p class="manual-text">Use when data requires strict relational schemas, ACID compliance, and complex join queries. Pair with Prisma or Knex in Node.js, or SQLAlchemy in Python for type-safe ORM migrations.</p>
+          <ol class="manual-step-list">
+            <li class="manual-step-item"><span>Design normalized tables with explicit primary keys, foreign key constraints, and created_at / updated_at timestamps.</span></li>
+            <li class="manual-step-item"><span>Add indexes on columns frequently used in WHERE filters, JOIN conditions, and ORDER BY clauses.</span></li>
+            <li class="manual-step-item"><span>Use parameterized queries or a type-safe ORM (like Prisma or SQLAlchemy) to prevent SQL injection.</span></li>
+          </ol>
+        </section>
+
+        <!-- Row 3 Right (7 cols): Interactive Obsidian Code Terminal -->
+        <aside class="bento-card bento-terminal" aria-label="Implementation snippet">
+          <div class="terminal-topbar">
+            <div class="terminal-title-group">
+              <span class="terminal-window-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="terminal-filename">schema.sql</span>
             </div>
-          </section>
-
-          <!-- Section 3: How to Use It -->
-          <section class="manual-section">
-            <h2 class="manual-section-title">
-              <i class="bi bi-terminal-fill"></i> How to Use It
-            </h2>
-            <p class="manual-text">Use when data requires strict relational schemas, ACID compliance, and complex join queries. Pair with Prisma or Knex in Node.js, or SQLAlchemy in Python for type-safe ORM migrations.</p>
-            <ol class="manual-list">
-              <li>Design normalized tables with explicit primary keys, foreign key constraints, and created_at / updated_at timestamps.</li>
-              <li>Add indexes on columns frequently used in WHERE filters, JOIN conditions, and ORDER BY clauses.</li>
-              <li>Use parameterized queries or a type-safe ORM (like Prisma or SQLAlchemy) to prevent SQL injection.</li>
-            </ol>
-            <pre class="manual-code-block"><code>CREATE TABLE tools (
+            <button type="button" class="btn-copy-code" id="copyCodeBtn" aria-label="Copy code snippet to clipboard">
+              <i class="bi bi-clipboard" aria-hidden="true"></i>
+              <span id="copyCodeLabel" aria-live="polite">Copy Snippet</span>
+            </button>
+          </div>
+          <pre class="manual-code-block" tabindex="0"><code id="manualCodeSnippet">CREATE TABLE tools (
   id VARCHAR(64) PRIMARY KEY,
   name VARCHAR(120) NOT NULL,
   category VARCHAR(80) NOT NULL,
@@ -166,34 +233,49 @@
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_category (category)
 );</code></pre>
-          </section>
+        </aside>
 
-        </div>
-
-        <!-- Footer Navigation inside Card -->
-        <footer class="manual-footer-nav">
-          <a href="../index.html" class="btn-back-directory">
-            <i class="bi bi-arrow-left"></i> Back to All Tools
+        <!-- Row 4 Full Span (6 + 6 cols): Previous & Next Tool Cards -->
+        <nav class="manual-pagination-grid" aria-label="Tool manual pagination">
+          <a href="tailwind.html" class="manual-nav-card prev-card" title="Previous Tool: Tailwind CSS">
+            <span class="nav-card-arrow" aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+            <span class="nav-card-meta">
+              <span class="nav-card-dir">Previous Manual &bull; Frameworks</span>
+              <span class="nav-card-title">Tailwind CSS</span>
+            </span>
           </a>
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            <a href="tailwind.html" class="btn-secondary-custom" title="Previous Tool: Tailwind CSS">
-              <i class="bi bi-chevron-left"></i> Tailwind CSS
-            </a>
-            <a href="supabase.html" class="btn-secondary-custom" title="Next Tool: Supabase">
-              Supabase <i class="bi bi-chevron-right"></i>
-            </a>
-            <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer" class="btn-open-doc">
-              Official Reference <i class="bi bi-box-arrow-up-right"></i>
-            </a>
-          </div>
-        </footer>
+          <a href="supabase.html" class="manual-nav-card next-card" title="Next Tool: Supabase">
+            <span class="nav-card-meta">
+              <span class="nav-card-dir">Next Manual &bull; Database</span>
+              <span class="nav-card-title">Supabase</span>
+            </span>
+            <span class="nav-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          </a>
+        </nav>
 
       </article>
 
     </div>
+
+    <!-- Grounding Site Footer -->
+    <footer class="manual-site-footer">
+      <div class="manual-site-footer-inner">
+        <a href="../index.html" class="btn-back-directory">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          <span>Back to All Tools</span>
+        </a>
+        <p class="manual-footer-credit">
+          &copy; 2026 <a href="https://educode597.github.io/" target="_blank" rel="noopener noreferrer">John Eduard Madriaga</a> (@EduCode597). Crafted with Taste.
+        </p>
+        <a href="#pageTop" class="btn-secondary-custom" aria-label="Scroll back to top">
+          <span>Back to Top</span>
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
   </main>
 
-  <!-- Theme Rotator Script -->
+  <!-- Theme Rotator & Copy Snippet Script -->
   <script>
     (function () {
       const PALETTES = [
@@ -204,25 +286,76 @@
         { id: 'crisp-alabaster', name: 'Crisp Alabaster' }
       ];
       let currentIdx = 0;
-      const saved = localStorage.getItem('ec_tools_palette');
-      const found = PALETTES.findIndex(p => p.id === saved);
-      if (found !== -1) currentIdx = found;
+      try {
+        const saved = localStorage.getItem('ec_tools_palette');
+        const found = PALETTES.findIndex(p => p.id === saved);
+        if (found !== -1) currentIdx = found;
+      } catch (e) {}
 
+      const btn = document.getElementById('rotatePaletteBtn');
       function updateLabel() {
+        const current = PALETTES[currentIdx];
         const label = document.getElementById('currentPaletteLabel');
-        if (label) label.textContent = PALETTES[currentIdx].name;
+        if (label) label.textContent = current.name;
+        if (btn) btn.setAttribute('aria-label', 'Rotate color scheme (current: ' + current.name + ')');
       }
       updateLabel();
 
-      const btn = document.getElementById('rotatePaletteBtn');
       if (btn) {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', function () {
           currentIdx = (currentIdx + 1) % PALETTES.length;
           const next = PALETTES[currentIdx];
           document.documentElement.setAttribute('data-palette', next.id);
-          localStorage.setItem('ec_tools_palette', next.id);
+          try {
+            localStorage.setItem('ec_tools_palette', next.id);
+          } catch (e) {}
           updateLabel();
         });
+      }
+
+      const copyBtn = document.getElementById('copyCodeBtn');
+      const codeEl = document.getElementById('manualCodeSnippet');
+      const copyLabel = document.getElementById('copyCodeLabel');
+      if (copyBtn && codeEl && copyLabel) {
+        let resetTimer = null;
+        copyBtn.addEventListener('click', function () {
+          const text = codeEl.textContent || '';
+          const markCopied = function () {
+            copyBtn.classList.add('is-copied');
+            copyLabel.textContent = 'Copied';
+            const icon = copyBtn.querySelector('i');
+            if (icon) icon.className = 'bi bi-check2';
+            if (resetTimer) clearTimeout(resetTimer);
+            resetTimer = setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyLabel.textContent = 'Copy Snippet';
+              if (icon) icon.className = 'bi bi-clipboard';
+            }, 1800);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+              fallbackCopy(text, markCopied);
+            });
+          } else {
+            fallbackCopy(text, markCopied);
+          }
+        });
+      }
+
+      function fallbackCopy(text, onDone) {
+        try {
+          const area = document.createElement('textarea');
+          area.value = text;
+          area.setAttribute('readonly', '');
+          area.style.position = 'fixed';
+          area.style.opacity = '0';
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          document.body.removeChild(area);
+          onDone();
+        } catch (e) {}
       }
     })();
   </script>

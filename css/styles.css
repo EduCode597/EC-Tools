@@ -53,6 +53,16 @@
   --badge-text: #131b23;
   --badge-border: rgba(130, 142, 130, 0.45);
 
+  --cta-bg: #131b23;
+  --cta-text: #fff4e9;
+  --cta-hover-bg: #000000;
+  --spotlight-bg: linear-gradient(145deg, rgba(130, 142, 130, 0.16) 0%, #fff4e9 100%);
+  --terminal-bg: #131b23;
+  --terminal-header: #0c1218;
+  --terminal-text: #fff4e9;
+  --terminal-muted: #b9c4b9;
+  --terminal-border: rgba(130, 142, 130, 0.38);
+
   --shadow-sm: 0 1px 3px rgba(19, 27, 35, 0.04);
   --shadow-card: 0 4px 18px -2px rgba(19, 27, 35, 0.06), 0 1px 3px rgba(19, 27, 35, 0.04);
   --shadow-hover: 0 14px 30px -4px rgba(19, 27, 35, 0.13), 0 4px 10px rgba(19, 27, 35, 0.06);
@@ -107,6 +117,16 @@
   --badge-text: #fff4e9;
   --badge-border: rgba(130, 142, 130, 0.45);
 
+  --cta-bg: #fff4e9;
+  --cta-text: #131b23;
+  --cta-hover-bg: #ffffff;
+  --spotlight-bg: linear-gradient(145deg, rgba(130, 142, 130, 0.2) 0%, #0d141c 100%);
+  --terminal-bg: #070b0f;
+  --terminal-header: #000000;
+  --terminal-text: #fff4e9;
+  --terminal-muted: #a7b5a7;
+  --terminal-border: rgba(130, 142, 130, 0.36);
+
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-card: 0 4px 22px rgba(0, 0, 0, 0.65);
   --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(130, 142, 130, 0.45);
@@ -148,6 +168,16 @@
   --badge-bg: #ffffff;
   --badge-text: #131b23;
   --badge-border: #828e82;
+
+  --cta-bg: #131b23;
+  --cta-text: #fff4e9;
+  --cta-hover-bg: #000000;
+  --spotlight-bg: linear-gradient(145deg, rgba(130, 142, 130, 0.24) 0%, #fff4e9 100%);
+  --terminal-bg: #131b23;
+  --terminal-header: #0c1218;
+  --terminal-text: #fff4e9;
+  --terminal-muted: #b4c2b4;
+  --terminal-border: rgba(130, 142, 130, 0.42);
 
   --shadow-sm: 0 1px 3px rgba(19, 27, 35, 0.06);
   --shadow-card: 0 4px 18px -2px rgba(19, 27, 35, 0.08);
@@ -191,6 +221,16 @@
   --badge-text: #ffffff;
   --badge-border: #828e82;
 
+  --cta-bg: #fff4e9;
+  --cta-text: #131b23;
+  --cta-hover-bg: #ffffff;
+  --spotlight-bg: linear-gradient(145deg, rgba(130, 142, 130, 0.22) 0%, #131b23 100%);
+  --terminal-bg: #080c10;
+  --terminal-header: #000000;
+  --terminal-text: #ffffff;
+  --terminal-muted: #9fae9f;
+  --terminal-border: rgba(130, 142, 130, 0.42);
+
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.8);
   --shadow-card: 0 4px 22px rgba(0, 0, 0, 0.75);
   --shadow-hover: 0 14px 38px rgba(0, 0, 0, 0.95), 0 0 0 1px #828e82;
@@ -233,6 +273,16 @@
   --badge-text: #131b23;
   --badge-border: #828e82;
 
+  --cta-bg: #131b23;
+  --cta-text: #ffffff;
+  --cta-hover-bg: #000000;
+  --spotlight-bg: linear-gradient(145deg, #fff4e9 0%, rgba(130, 142, 130, 0.14) 100%);
+  --terminal-bg: #131b23;
+  --terminal-header: #0c1218;
+  --terminal-text: #fff4e9;
+  --terminal-muted: #b9c4b9;
+  --terminal-border: rgba(130, 142, 130, 0.38);
+
   --shadow-sm: 0 1px 3px rgba(19, 27, 35, 0.04);
   --shadow-card: 0 4px 18px -2px rgba(19, 27, 35, 0.06);
   --shadow-hover: 0 14px 30px -4px rgba(19, 27, 35, 0.14);
@@ -246,11 +296,17 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-app);
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
   display: flex;
@@ -258,6 +314,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 2100;
+  background-color: var(--cta-bg);
+  color: var(--cta-text) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  top: 12px;
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1258,7 +1336,7 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   10. Dedicated Tool Manual Pages (README-Style Layout)
+   10. Dedicated Tool Manual Pages (Wide Asymmetric Bento Showcase)
    -------------------------------------------------------------------------- */
 
 .btn-back-directory {
@@ -1272,7 +1350,8 @@ a:hover {
   font-weight: 600;
   padding: 0.42rem 0.9rem;
   border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1283,27 +1362,57 @@ a:hover {
   transform: translateX(-2px);
 }
 
+.btn-back-directory:active {
+  transform: scale(0.98);
+}
+
+.btn-back-directory:focus-visible,
+.btn-palette-rotator:focus-visible,
+.btn-secondary-custom:focus-visible,
+.btn-open-doc:focus-visible,
+.btn-manual-primary:focus-visible,
+.btn-copy-code:focus-visible,
+.manual-jump-link:focus-visible,
+.manual-nav-card:focus-visible,
+.manual-code-block:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
 .manual-wrapper {
-  max-width: 920px;
+  max-width: 1480px;
   width: 100%;
   margin: 0 auto;
-  padding: 2.25rem 1.5rem 4rem;
+  padding: 1.85rem 2.5rem 3.25rem;
   flex-grow: 1;
+}
+
+.manual-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
 .manual-breadcrumb {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   color: var(--text-muted);
-  margin-bottom: 1.25rem;
+  margin: 0;
   font-weight: 500;
 }
 
 .manual-breadcrumb a {
   color: var(--text-muted);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .manual-breadcrumb a:hover {
@@ -1311,6 +1420,33 @@ a:hover {
   text-decoration: underline;
 }
 
+.manual-jump-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.manual-jump-link {
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.3rem 0.78rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.manual-jump-link:hover {
+  color: var(--text-main);
+  background-color: var(--primary-subtle);
+}
+
+/* Legacy fallback & 12-Column Interlocking Bento Grid */
 .manual-readme-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -1320,72 +1456,246 @@ a:hover {
   transition: background-color var(--transition-normal), border-color var(--transition-normal);
 }
 
-.manual-hero {
-  padding: 2rem 2.25rem 1.65rem;
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--bg-surface);
+.manual-readme-card.manual-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 1.35rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
-.manual-readme-badge {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+.bento-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  padding: 2.15rem 2.35rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-normal);
+}
+
+@keyframes manualBentoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.manual-bento-grid > * {
+  animation: manualBentoReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.manual-bento-grid > *:nth-child(1) { animation-delay: 0ms; }
+.manual-bento-grid > *:nth-child(2) { animation-delay: 45ms; }
+.manual-bento-grid > *:nth-child(3) { animation-delay: 90ms; }
+.manual-bento-grid > *:nth-child(4) { animation-delay: 135ms; }
+.manual-bento-grid > *:nth-child(5) { animation-delay: 180ms; }
+.manual-bento-grid > *:nth-child(6) { animation-delay: 220ms; }
+.manual-bento-grid > *:nth-child(7) { animation-delay: 260ms; }
+
+/* Row 1: Asymmetric Split Hero (7 cols + 5 cols) */
+.bento-hero-primary {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.4rem 2.6rem;
 }
 
 .manual-title {
-  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  font-size: clamp(2rem, 3.3vw, 2.85rem);
   font-weight: 800;
   color: var(--text-main);
-  letter-spacing: -0.03em;
-  margin: 0.5rem 0 0.65rem;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 0.7rem 0 0.75rem;
+  text-wrap: balance;
 }
 
 .manual-lead {
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.68;
   color: var(--text-muted);
-  margin-bottom: 1.15rem;
+  max-width: 60ch;
+  margin: 0;
+  text-wrap: pretty;
 }
 
-.manual-meta-bar {
+.manual-hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
 }
 
-.manual-body {
-  padding: 2rem 2.25rem;
+.btn-manual-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cta-bg);
+  color: var(--cta-text) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.62rem 1.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.btn-manual-primary:hover {
+  background-color: var(--cta-hover-bg);
+  color: var(--cta-text) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-manual-primary:active {
+  transform: scale(0.98);
+}
+
+.bento-hero-spotlight {
+  grid-column: span 5;
+  background: var(--spotlight-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 2.15rem 2.25rem;
+}
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.spotlight-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.spotlight-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--accent-sage);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.spotlight-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.spotlight-spec-cell {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.72rem 0.9rem;
+}
+
+.spotlight-spec-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 0.2rem;
+}
+
+.spotlight-spec-value {
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.manual-callout {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 3.5px solid var(--accent-sage);
+  border-radius: var(--radius-lg);
+  padding: 1.05rem 1.25rem;
+  margin: 0;
+  font-size: 0.89rem;
+  line-height: 1.62;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+}
+
+.manual-callout strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.86rem;
+  color: var(--text-main);
+}
+
+/* Row 2: Overview (5 cols) + Structured Benefits Grid (7 cols) */
 .manual-section {
-  margin-bottom: 2.15rem;
-  padding-bottom: 1.85rem;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.manual-section:last-of-type {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
 }
 
+.bento-card.manual-section {
+  padding: 2.15rem 2.35rem;
+  border: 1px solid var(--border-color);
+}
+
+.bento-overview {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.bento-benefits {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+}
+
 .manual-section-title {
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 .manual-section-title i {
@@ -1394,38 +1704,238 @@ a:hover {
 }
 
 .manual-text {
-  font-size: 0.94rem;
-  line-height: 1.72;
+  font-size: 0.95rem;
+  line-height: 1.75;
   color: var(--text-muted);
-  margin-bottom: 1rem;
+  max-width: 64ch;
+  margin: 0 0 1rem 0;
+  text-wrap: pretty;
 }
 
-.manual-callout {
+.manual-text:last-child {
+  margin-bottom: 0;
+}
+
+.overview-tag-footer {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* 2 + 1 Interlocking Benefit Sub-Grid (Zero Empty Cells) */
+.manual-benefit-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 0.95rem;
+  flex-grow: 1;
+}
+
+.manual-benefit-card {
   background-color: var(--bg-callout);
   border: 1px solid var(--bg-callout-border);
-  border-left: 3.5px solid var(--accent-sage);
-  border-radius: var(--radius-md);
-  padding: 1.1rem 1.35rem;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: var(--text-main);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.manual-list {
-  padding-left: 1.25rem;
-  margin-bottom: 1rem;
+.manual-benefit-card:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.manual-benefit-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--clr-sage);
+  box-shadow: var(--shadow-sm);
+}
+
+.benefit-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.benefit-card-index {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--accent-sage);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.benefit-card-desc {
+  font-size: 0.89rem;
+  line-height: 1.62;
   color: var(--text-muted);
-  font-size: 0.93rem;
-  line-height: 1.7;
+  margin: 0;
 }
 
-.manual-list li {
-  margin-bottom: 0.55rem;
+/* Row 3: Actionable Workflow Steps (5 cols) + Obsidian Code Terminal (7 cols) */
+.bento-workflow {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
 }
 
-.manual-list li strong {
+.manual-step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  counter-reset: manual-step;
+}
+
+.manual-step-item {
+  counter-increment: manual-step;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 0.9rem 1.05rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-callout);
+  border: 1px solid var(--bg-callout-border);
+  font-size: 0.89rem;
+  line-height: 1.62;
   color: var(--text-main);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.manual-step-item:hover {
+  border-color: var(--clr-sage);
+  transform: translateX(2px);
+}
+
+.manual-step-item::before {
+  content: counter(manual-step);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.bento-terminal {
+  grid-column: span 7;
+  background-color: var(--terminal-bg);
+  border: 1px solid var(--terminal-border);
+  border-radius: var(--radius-xl);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.terminal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--terminal-header);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.terminal-window-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.terminal-window-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(130, 142, 130, 0.45);
+}
+
+.terminal-filename {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--terminal-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-copy-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(130, 142, 130, 0.2);
+  color: var(--terminal-text);
+  border: 1px solid var(--terminal-border);
+  border-radius: var(--radius-sm);
+  padding: 0.34rem 0.76rem;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-copy-code:hover {
+  background-color: var(--clr-sage);
+  color: #131b23;
+  border-color: var(--clr-sage);
+}
+
+.btn-copy-code:active {
+  transform: scale(0.97);
+}
+
+.btn-copy-code.is-copied {
+  background-color: #fff4e9;
+  color: #131b23;
+  border-color: #fff4e9;
 }
 
 .manual-code-block {
@@ -1434,17 +1944,118 @@ a:hover {
   border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.83rem;
-  line-height: 1.6;
+  font-size: 0.84rem;
+  line-height: 1.68;
   color: var(--text-main);
   overflow-x: auto;
-  margin: 0.85rem 0 0;
+  margin: 0;
 }
 
-.manual-footer-nav {
-  padding: 1.25rem 2.25rem;
-  background-color: var(--bg-surface);
+.bento-terminal .manual-code-block {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1.4rem 1.5rem;
+  color: var(--terminal-text);
+  flex-grow: 1;
+}
+
+/* Row 4: Directional Prev / Next Tool Cards (6 cols + 6 cols) */
+.manual-pagination-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+
+.manual-nav-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.35rem 1.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-normal);
+}
+
+.manual-nav-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--clr-sage);
+  box-shadow: var(--shadow-hover);
+  background-color: var(--bg-card-hover);
+}
+
+.manual-nav-card:active {
+  transform: scale(0.99);
+}
+
+.manual-nav-card.next-card {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.nav-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.nav-card-dir {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.nav-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.nav-card-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.manual-nav-card.prev-card:hover .nav-card-arrow {
+  transform: translateX(-3px);
+  border-color: var(--clr-sage);
+}
+
+.manual-nav-card.next-card:hover .nav-card-arrow {
+  transform: translateX(3px);
+  border-color: var(--clr-sage);
+}
+
+/* Full-Bleed Grounding Footer Strip on Manual Pages */
+.manual-site-footer {
   border-top: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  padding: 1.25rem 2.5rem;
+  margin-top: auto;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.manual-site-footer-inner {
+  max-width: 1480px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1452,14 +2063,123 @@ a:hover {
   gap: 1rem;
 }
 
+.manual-footer-credit {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.manual-footer-credit a {
+  color: var(--text-main);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Responsive Breakpoints (Explicit Collapse Rules) */
+@media (max-width: 1199.98px) {
+  .manual-wrapper {
+    padding: 1.5rem 1.5rem 2.75rem;
+  }
+  .manual-site-footer {
+    padding: 1.2rem 1.5rem;
+  }
+  .bento-hero-primary {
+    grid-column: span 7;
+    padding: 2rem;
+  }
+  .bento-hero-spotlight {
+    grid-column: span 5;
+    padding: 1.85rem;
+  }
+  .bento-overview,
+  .bento-benefits {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .bento-hero-primary,
+  .bento-hero-spotlight,
+  .bento-overview,
+  .bento-benefits,
+  .bento-workflow,
+  .bento-terminal {
+    grid-column: 1 / -1;
+  }
+  .bento-card,
+  .bento-card.manual-section,
+  .bento-hero-primary,
+  .bento-hero-spotlight {
+    padding: 1.65rem 1.75rem;
+  }
+}
+
 @media (max-width: 767.98px) {
   .manual-wrapper {
-    padding: 1.25rem 1rem 2.5rem;
+    padding: 1.15rem 1rem 2.25rem;
   }
-  .manual-hero,
-  .manual-body,
-  .manual-footer-nav {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+  .manual-site-footer {
+    padding: 1.15rem 1rem;
+  }
+  .manual-readme-card.manual-bento-grid {
+    gap: 1rem;
+  }
+  .bento-card,
+  .bento-card.manual-section,
+  .bento-hero-primary,
+  .bento-hero-spotlight {
+    padding: 1.35rem 1.25rem;
+  }
+  .manual-benefit-grid,
+  .manual-pagination-grid,
+  .spotlight-spec-grid {
+    grid-template-columns: 1fr;
+  }
+  .manual-benefit-card:nth-child(3) {
+    grid-column: auto;
+  }
+  .manual-jump-nav {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .bento-terminal .manual-code-block {
+    padding: 1.1rem 1.15rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .btn-back-directory .back-label-full {
+    display: none;
+  }
+  .btn-back-directory .back-label-short {
+    display: inline;
+  }
+}
+
+@media (min-width: 576px) {
+  .btn-back-directory .back-label-short {
+    display: none;
+  }
+}
+
+/* Reduced Motion Guardrail (Mandatory Accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .manual-bento-grid > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
