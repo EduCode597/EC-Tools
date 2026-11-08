@@ -36,6 +36,10 @@ describe('EC-Tools Core Business Logic', () => {
     assert.equal(techStacks.length, 6);
     techStacks.forEach(t => assert.equal(t.category, 'Tech Stacks'));
 
+    const frameworks = filterTools(defaultTools, { category: 'Frameworks' });
+    assert.equal(frameworks.length, 3);
+    assert.deepEqual(frameworks.map(f => f.name).sort(), ['Bootstrap 5', 'Express.js', 'Tailwind CSS']);
+
     const databases = filterTools(defaultTools, { category: 'Database' });
     assert.equal(databases.length, 2);
     assert.deepEqual(databases.map(d => d.name).sort(), ['MySQL', 'Supabase']);
@@ -48,8 +52,8 @@ describe('EC-Tools Core Business Logic', () => {
     assert.deepEqual(deploymentTools.map(d => d.name).sort(), ['Render', 'Vercel']);
 
     const openSourceTools = filterTools(defaultTools, { category: 'Open Source Tools' });
-    assert.equal(openSourceTools.length, 2);
-    assert.deepEqual(openSourceTools.map(d => d.name).sort(), ['Brevo', 'Redis']);
+    assert.equal(openSourceTools.length, 3);
+    assert.deepEqual(openSourceTools.map(d => d.name).sort(), ['Brevo', 'Gemini Notebook', 'Redis']);
   });
 
   test('Search filter matches by tool name', () => {
@@ -64,6 +68,11 @@ describe('EC-Tools Core Business Logic', () => {
     const graphifyMatch = filterTools(defaultTools, { query: 'Graphify' });
     assert.equal(graphifyMatch.length, 1);
     assert.equal(graphifyMatch[0].id, 'graphify');
+
+    // Verify Gemini Notebook search match
+    const notebookMatch = filterTools(defaultTools, { query: 'Gemini Notebook' });
+    assert.equal(notebookMatch.length, 1);
+    assert.equal(notebookMatch[0].id, 'gemini-notebook');
   });
 
   test('Search filter matches inside howToUse notes', () => {
