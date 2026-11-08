@@ -84,6 +84,16 @@ const DEFAULT_TOOLS = [
     "tags": ["frontend", "css-framework", "utility-first", "design"]
   },
   {
+    "id": "expressjs",
+    "name": "Express.js",
+    "category": "Frameworks",
+    "url": "https://expressjs.com/",
+    "manualUrl": "manuals/expressjs.html",
+    "description": "Minimal, unopinionated Node.js web application framework for building REST APIs, backend services, and dynamic web apps.",
+    "howToUse": "Use on top of Node.js to organize HTTP routes, attach composable middleware (express.json, CORS, authentication, rate limiting), serve web pages or JSON APIs, and centralize error handling across full-stack applications.",
+    "tags": ["backend", "nodejs", "framework", "rest-api", "middleware"]
+  },
+  {
     "id": "mysql",
     "name": "MySQL",
     "category": "Database",
@@ -242,6 +252,16 @@ const DEFAULT_TOOLS = [
     "description": "Transactional email, SMTP relay, and messaging API platform with open-source SDKs for automated notifications and campaigns.",
     "howToUse": "Integrate via REST API or SMTP to send transactional emails (OTP verification codes, password resets, welcome emails, and system alerts). Store your API key securely in .env and use dynamic templates for consistent branding.",
     "tags": ["open-source", "email", "smtp", "transactional", "api"]
+  },
+  {
+    "id": "gemini-notebook",
+    "name": "Gemini Notebook",
+    "category": "Open Source Tools",
+    "url": "https://notebooklm.google.com",
+    "manualUrl": "manuals/gemini-notebook.html",
+    "description": "Gemini-powered research workspace for synthesizing project documentation, technical articles, and domain subjects with source-grounded citations.",
+    "howToUse": "Create a dedicated notebook when starting a new project and upload official docs, specs, papers, or reference URLs. Ask targeted questions to understand unfamiliar topics, compare architecture approaches, and generate structured study guides or project briefs grounded in your sources.",
+    "tags": ["open-source", "research", "gemini", "documentation", "ai-workspace"]
   }
 ];
 

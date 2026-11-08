@@ -24,6 +24,7 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
     const defaultTools = require(toolsJsPath);
     const jsonTools = JSON.parse(fs.readFileSync(toolsJsonPath, 'utf8'));
     assert.equal(defaultTools.length, jsonTools.length, 'tools.js and tools.json should have the same count');
+    assert.deepEqual(defaultTools, jsonTools, 'tools.js and tools.json must contain identical tool objects');
   });
 
   test('All requested tools from user prompt are present with valid metadata', () => {
@@ -39,6 +40,7 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       'node.js',
       'bootstrap',
       'tailwind',
+      'express.js',
       'mysql',
       'supabase',
       'superpowers',
@@ -54,7 +56,8 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       'render',
       'vercel',
       'redis',
-      'brevo'
+      'brevo',
+      'gemini notebook'
     ];
 
     for (const req of requiredTools) {
@@ -73,6 +76,16 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       assert.ok(Array.isArray(tool.tags) && tool.tags.length > 0, `Tool ${tool.name} must have tags`);
       assert.equal(tool.manualUrl, `manuals/${tool.id}.html`, `Tool ${tool.name} must have manualUrl pointing to manuals/${tool.id}.html`);
     });
+
+    const expressTool = tools.find(t => t.id === 'expressjs');
+    assert.ok(expressTool, 'Express.js entry (id: expressjs) must exist');
+    assert.equal(expressTool.category, 'Frameworks');
+    assert.equal(expressTool.url, 'https://expressjs.com/');
+
+    const geminiNotebookTool = tools.find(t => t.id === 'gemini-notebook');
+    assert.ok(geminiNotebookTool, 'Gemini Notebook entry (id: gemini-notebook) must exist');
+    assert.equal(geminiNotebookTool.category, 'Open Source Tools');
+    assert.equal(geminiNotebookTool.url, 'https://notebooklm.google.com');
   });
 
   test('Every tool has a dedicated README-style manual HTML file in manuals/ directory', () => {
@@ -123,6 +136,13 @@ describe('EC-Tools Test Suite (Read-Only GitHub Pages Deployment)', () => {
       assert.ok(html.includes('bento-terminal'), `${tool.manualUrl} must include .bento-terminal code panel`);
       assert.ok(html.includes('btn-copy-code'), `${tool.manualUrl} must include interactive .btn-copy-code button`);
       assert.ok(html.includes('manual-pagination-grid'), `${tool.manualUrl} must include .manual-pagination-grid for Prev/Next cards`);
+
+      // Verify circular Prev/Next pagination matches dataset order
+      const idx = tools.findIndex(t => t.id === tool.id);
+      const prevTool = tools[(idx - 1 + tools.length) % tools.length];
+      const nextTool = tools[(idx + 1) % tools.length];
+      assert.ok(html.includes(`href="${prevTool.id}.html"`), `${tool.manualUrl} prev-card must link to ${prevTool.id}.html`);
+      assert.ok(html.includes(`href="${nextTool.id}.html"`), `${tool.manualUrl} next-card must link to ${nextTool.id}.html`);
 
       // Taste Skill strict anti-slop rules: zero em-dashes / en-dashes & no duplicate external CTA label
       assert.ok(!html.includes('—') && !html.includes('&mdash;'), `${tool.manualUrl} must contain zero em-dashes`);

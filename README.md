@@ -10,12 +10,12 @@ Designed to easily navigate your tools, access official documentation, and refer
 
 - **Categorized Directory**:
   - 💻 **Tech Stacks**: HTML5, CSS3, JavaScript (ES6+), React, Python, Node.js
-  - ⚡ **Frameworks**: Bootstrap 5, Tailwind CSS
+  - ⚡ **Frameworks**: Bootstrap 5, Tailwind CSS, Express.js
   - 🗄️ **Database**: MySQL, Supabase
   - ☁️ **Deployment Tools**: Render, Vercel
   - 🐙 **Version Control**: GitHub
   - 🧠 **Open Source Skills**: Superpowers, Ponytail, Wayfinder, Taste, Claude Skills, Graphify
-  - 📦 **Open Source Tools**: Redis, Brevo
+  - 📦 **Open Source Tools**: Redis, Brevo, Gemini Notebook
   - 🌐 **Online Platforms**: React Bits, Figma, Untitled UI
 - **Dedicated README Manuals Per Tool**: Clicking any tool card navigates to `manuals/<tool-id>.html`—a dedicated README-style user manual explaining what the tool/skill is, how it helps with projects, and how to use it right away.
 - **Practical Notes Per Tool**: Dedicated *"💡 How to Use in Future Projects"* block with cheat-sheet tips, recommended setups, and architectural guidance.
@@ -82,7 +82,7 @@ EC-Tools/
 │   ├── tools.json        # Clean JSON dataset of tools and documentation links
 │   └── tools.js          # Direct-load dataset for zero-CORS local & static execution
 ├── manuals/
-│   └── *.html            # 24 dedicated README-style user manual pages per tool
+│   └── *.html            # 26 dedicated README-style user manual pages per tool
 └── test/
     ├── tools.test.js     # Schema, required tools, and HTML/CSS validation tests
     └── logic.test.js     # Search, filter, and state manipulation unit tests
